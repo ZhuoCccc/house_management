@@ -1,0 +1,103 @@
+/* pages/admin/manage_hotel_rooms/manage_hotel_rooms.wxss */
+.page-container {
+  padding: 15px;
+  background-color: #f9f9f9;
+  height: 100vh; /* Set explicit height */
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex; /* Enable flex layout */
+  flex-direction: column; /* Stack children vertically */
+}
+
+.hotel-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+  flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.date-info {
+  font-size: 13px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-shrink: 0; /* Prevent from shrinking if uncommented */
+}
+
+.room-list { /* This is now a scroll-view */
+  flex: 1; /* Take remaining vertical space */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box;
+  /* overflow-y: auto; Not needed for scroll-view */
+}
+
+.room-item {
+  background-color: #fff;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column; /* Stack room info and status picker */
+}
+
+.room-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Space between info and picker */
+}
+
+.room-number-type {
+  font-size: 16px;
+  color: #454545;
+  font-weight: 500;
+}
+
+.current-status {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.current-status.kongxian {
+  background-color: #4CAF50; /* Green for 空闲 */
+}
+.current-status.ruzhu {
+  background-color: #F44336; /* Red for 入住 */
+}
+.current-status.dasao {
+  background-color: #FFC107; /* Amber for 打扫中 */
+}
+.current-status.weixiu {
+  background-color: #607D8B; /* Blue Grey for 维修中 */
+}
+.current-status.default {
+  background-color: #9E9E9E; /* Grey for default/unknown */
+}
+
+.status-picker-label {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.status-picker .picker {
+  background-color: #f0f0f0;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  border: 1rpx solid #ddd;
+}
+
+.empty-list-message {
+  text-align: center;
+  color: #888;
+  margin-top: 30px;
+  font-size: 15px;
+} 

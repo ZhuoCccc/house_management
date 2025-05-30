@@ -1,0 +1,329 @@
+/* Custom Navigation Bar Styles */
+.custom-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #ffffff; /* Light theme: White nav bar */
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
+}
+
+.nav-bar-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center title by default */
+  padding: 0 15px; /* General padding */
+  box-sizing: border-box;
+}
+
+.nav-back-arrow {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  /* Ensure you have a dark version of the arrow or use text/SVG */
+}
+
+.nav-back-arrow-text { /* Added in WXML for text fallback */
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px; /* Adjust for a nice back arrow appearance */
+  color: #333333; /* Dark color for back arrow text */
+  line-height: 1; /* Ensure it's vertically centered well */
+  padding: 0 5px;
+}
+
+.nav-title {
+  font-size: 17px;
+  color: #333333; /* Dark title text for light nav bar */
+  font-weight: 600; /* Slightly bolder */
+}
+
+/* Page Scrollable Content (replaces .page-content-wrapper for scrolling) */
+.page-scrollable-content {
+  /* height is set by inline style based on navBarHeight, statusBarHeight, and bottomBarHeight */
+  background-color: #f7f8fa; /* Light grey page background */
+  box-sizing: border-box;
+  width: 100%;
+  /* overflow-y: auto; -- scroll-view handles this */
+  /* min-height: 100vh; -- height is now calculated */
+}
+
+/* Old .page-content-wrapper - comment out or remove if fully replaced */
+/*
+.page-content-wrapper {
+  background-color: #f7f8fa; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-left: 12px; 
+  padding-right: 12px;
+  padding-bottom: 100px; 
+  width: 100%;
+  overflow-y: auto; 
+}
+*/
+
+/* General Page Styles - .container inside scroll-view will now handle content padding */
+.container {
+  /* padding-bottom: 80px; -> This might have been for the fixed bottom bar, 
+                             scroll-view's height calculation now accounts for bottom bar. 
+                             Content itself might need some bottom padding if it reaches the very end of scrollable area. */
+  padding: 0 12px 20px 12px; /* Horizontal padding from old .page-content-wrapper, and some bottom padding */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.section {
+  background-color: #ffffff; /* White cards */
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 0; 
+  margin-right: 0;
+  border-radius: 8px;
+  padding: 18px; /* Slightly more padding in sections */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Standard subtle shadow for light theme */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-size: 17px; /* Slightly larger section title */
+  font-weight: 600; /* Bolder */
+  color: #323233; /* Dark grey */
+  margin-bottom: 18px; /* More space after title */
+}
+
+/* Order Summary Section */
+.order-summary-section {
+  /* Specific adjustments if needed */
+}
+.order-summary-section .room-name {
+  font-size: 18px;
+  font-weight: 600; /* Bolder */
+  color: #323233;
+  margin-bottom: 10px;
+}
+
+.order-summary-section .dates-nights {
+  font-size: 14px;
+  color: #646566; /* Medium grey */
+  display: flex;
+  align-items: center;
+}
+
+.order-summary-section .date-separator {
+  margin: 0 8px;
+}
+
+.order-summary-section .total-nights {
+  margin-left: auto; /* Pushes to the right */
+  font-weight: bold;
+}
+
+/* Check-in Info Section */
+.form-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0; /* Increased padding for better touch targets */
+  border-bottom: 1px solid #f0f0f0; /* Lighter border */
+  font-size: 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-item .label {
+  color: #323233; /* Darker label */
+  margin-right: 15px; /* More space after label */
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 15px; /* Ensure consistent font size */
+}
+
+.form-item .input-field,
+.form-item .textarea-field {
+  flex: 1;
+  color: #333333; /* Darker input text */
+  text-align: right; /* Keeping this as per original, but consider left-align */
+  font-size: 15px;
+}
+
+.form-item .input-field::placeholder,
+.form-item .textarea-field::placeholder {
+  color: #c8c9cc; /* Lighter placeholder text */
+}
+
+.form-item .textarea-field {
+  height: 70px; /* Slightly more height */
+  padding-top: 0; /* Keep padding as is */
+  text-align: left; /* Remarks are usually better left-aligned */
+}
+
+.remarks-item {
+  align-items: flex-start;
+}
+
+/* Stepper for Room Quantity */
+.stepper {
+  display: flex;
+  align-items: center;
+  /* margin-left: auto; Removed, as justify-content: space-between on form-item handles positioning */
+  flex-shrink: 0; /* Prevent stepper from shrinking if label/input is too long */
+}
+
+.stepper-btn {
+  min-width: 30px; /* Slightly larger touch target */
+  width: 30px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #f7f8fa; /* Light grey background for buttons */
+  color: #323233; /* Dark text on buttons */
+  border: 1px solid #e0e0e0; /* Clearer border */
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: background-color 0.2s; /* Add transition */
+}
+.stepper-btn:active {
+  background-color: #e9eaec; /* Slightly darker on press */
+}
+
+.stepper-btn.minus {
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+   margin-right: -1px; /* Overlap borders slightly */
+}
+
+.stepper-btn.plus {
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+   margin-left: -1px; /* Overlap borders slightly */
+}
+
+.stepper-btn.disabled {
+  background-color: #fcfcfc; /* Lighter disabled background */
+  color: #c8c9cc; /* Lighter disabled text */
+  border-color: #f0f0f0; /* Lighter disabled border */
+}
+
+.quantity-input {
+  width: 40px; /* Wider input */
+  text-align: center;
+  font-size: 15px;
+  color: #323233;
+  height: 30px;
+  min-height: 30px;
+  line-height: 30px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: none;
+  border-right: none;
+  background-color: #ffffff; /* White background for input */
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Cancellation Policy Section */
+.cancellation-policy-section .policy-text {
+  font-size: 13px; /* Slightly larger policy text */
+  color: #646566; /* Medium grey */
+  line-height: 1.7; /* Improved line height */
+}
+
+/* Bottom Bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff; /* White background */
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06); /* Adjusted shadow for light theme */
+  z-index: 100;
+  box-sizing: border-box;
+  /* Add safe area padding for iPhone X and similar devices */
+  padding-bottom: calc(10px + constant(safe-area-inset-bottom)); 
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
+.price-section {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+}
+
+.price-symbol {
+  font-size: 16px;
+  color: #fa5151; /* Standard red for price */
+  margin-right: 2px;
+}
+
+.price-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fa5151; /* Standard red for price */
+}
+
+.details-link {
+  font-size: 13px; /* Slightly smaller */
+  color: #586c94; /* A blueish link color, or use primary theme color */
+  margin-left: 10px; /* Add some margin from price */
+  display: flex;
+  align-items: center;
+}
+
+.arrow-icon-text { /* Added in WXML for text fallback */
+  font-size: 12px;
+  color: #586c94; /* Match link color */
+  margin-left: 3px;
+  transition: transform 0.2s ease-in-out;
+}
+.arrow-icon-text.up {
+ transform: rotate(180deg);
+}
+
+.submit-button {
+  background-image: linear-gradient(to right, #007bff, #0056b3); /* Example primary button color */
+  /* Or a solid color: background-color: #007bff; */
+  color: white;
+  padding: 0 25px; /* Horizontal padding */
+  height: 44px; /* Standard button height */
+  line-height: 44px;
+  border-radius: 22px; /* Pill shape */
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+  margin-left: auto; /* Pushes button to the right */
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+.submit-button:active {
+  opacity: 0.85;
+  box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Placeholder for price details modal if any */
+/* .price-details-modal { ... } */
+
+/* General utility for hiding elements if needed */
+.hidden {
+  display: none !important;
+} 

@@ -1,0 +1,49 @@
+<view class="page-container">
+  <view class="form-section">
+    <view class="form-group">
+      <text class="form-label">酒店名称:</text>
+      <input class="form-input" placeholder="请输入酒店名称" value="{{hotel.name}}" bindinput="handleInputChange" data-field="name" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">城市标签:</text>
+      <input class="form-input" placeholder="请输入城市名 (如: 广州)" value="{{hotel.cityName}}" bindinput="handleInputChange" data-field="cityName" />
+      <view class="input-tip">提示: 此城市名应与首页筛选的城市名一致。</view>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">酒店位置:</text>
+      <input class="form-input" placeholder="请输入详细地址" value="{{hotel.location}}" bindinput="handleInputChange" data-field="location" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">酒店描述:</text>
+      <textarea class="form-textarea" placeholder="请输入酒店描述 (例如设施、特色服务等)" value="{{hotel.description}}" bindinput="handleInputChange" data-field="description" auto-height maxlength="-1" />
+    </view>
+
+    <!-- Hotel Image Upload Section -->
+    <view class="form-group image-upload-section-hotel">
+      <text class="form-label">酒店图片:</text>
+      <view class="image-preview-container-hotel" wx:if="{{hotel.hotelImageFileID}}">
+        <image class="image-preview-hotel" src="{{hotel.hotelImageFileID}}" mode="aspectFit"></image>
+        <button class="image-action-btn remove-image-btn-hotel" size="mini" type="warn" bindtap="removeHotelImage">移除图片</button>
+      </view>
+      <button 
+        class="image-action-btn upload-image-btn-hotel {{hotel.hotelImageFileID ? 'replace-image-btn-hotel' : ''}}" 
+        bindtap="uploadHotelImage"
+        loading="{{isUploadingImage}}" 
+        disabled="{{isUploadingImage}}"
+      >
+        {{hotel.hotelImageFileID ? '替换图片' : '上传图片'}}
+      </button>
+      <view wx:if="{{isUploadingImage}}" class="upload-progress-text-hotel">图片上传中...</view>
+    </view>
+    <!-- END: Hotel Image Upload Section -->
+
+  </view>
+
+  <view class="action-buttons">
+    <button class="save-btn" type="primary" bindtap="handleSaveHotel">保存更改</button>
+    <button class="cancel-btn" bindtap="navigateBack">取消</button>
+  </view>
+</view> 

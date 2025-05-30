@@ -1,0 +1,16 @@
+/**app.wxss**/
+page {
+  height: 100%; /* Or min-height: 100% */
+  overflow-y: auto; /* Allow page itself to scroll if content overflows */
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 

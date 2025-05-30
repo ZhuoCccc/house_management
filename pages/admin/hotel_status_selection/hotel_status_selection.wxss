@@ -1,0 +1,156 @@
+/* pages/admin/hotel_status_selection/hotel_status_selection.wxss */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #f4f4f4;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.loading-container,
+.error-container,
+.empty-list-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #888;
+  font-size: 28rpx;
+  margin-top: 100rpx;
+  padding: 40rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  width: calc(100% - 40rpx);
+  max-width: 700rpx; /* Consistent max-width */
+}
+
+.error-container text,
+.empty-list-message text {
+  margin-bottom: 15rpx;
+}
+
+.retry-button {
+  background-color: #007aff;
+  color: white;
+  padding: 15rpx 40rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+}
+
+.hotels-rooms-list-container {
+  width: 100%;
+  max-width: 700rpx;
+  flex: 1; /* Allow it to grow and shrink vertically */
+  min-height: 0; /* Important for flex item height calculation in a column for internal scrolling */
+}
+
+.hotel-section-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  padding: 25rpx;
+  box-shadow: 0 6rpx 18rpx rgba(0, 0, 0, 0.08);
+}
+
+.hotel-name-header {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  padding-bottom: 15rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #ecf0f1;
+  text-align: left;
+}
+
+.rooms-list {
+  /* Container for room items */
+}
+
+.room-item-header-row,
+.room-item-row {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.room-item-row:last-child {
+  border-bottom: none;
+}
+
+.room-header-text {
+  font-size: 24rpx;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.room-detail-text {
+  font-size: 28rpx;
+  color: #34495e;
+}
+
+.room-number-header,
+.room-number-detail {
+  flex: 1.5; /* Room number takes more space */
+  text-align: left;
+}
+
+.room-status-header,
+.room-status-detail {
+  flex: 2; /* Status takes more space */
+  text-align: center;
+}
+
+.room-action-header,
+.change-status-btn {
+  flex: 1.5; /* Action takes space */
+  text-align: right;
+}
+
+.change-status-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 8rpx 20rpx !important; /* Important for mini button override */
+  line-height: 1.2 !important;
+  font-size: 24rpx !important;
+  border-radius: 8rpx;
+  /* min-width: 150rpx; */ /* Adjust if needed */
+}
+
+/* Status-specific colors */
+.status-kongxian {
+  color: #2ecc71; /* Green */
+  font-weight: bold;
+}
+.status-ruzhu {
+  color: #e74c3c; /* Red */
+  font-weight: bold;
+}
+.status-dasao {
+  color: #f39c12; /* Orange */
+  font-weight: bold;
+}
+.status-weixiu {
+  color: #95a5a6; /* Grey */
+  font-weight: bold;
+}
+
+.no-rooms-message {
+  font-size: 26rpx;
+  color: #aaa;
+  text-align: center;
+  padding: 30rpx 0;
+} 

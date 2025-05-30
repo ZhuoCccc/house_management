@@ -1,0 +1,156 @@
+.page-container {
+  padding: 20px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.form-section {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input,
+.form-input-display {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-input-display {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.input-tip {
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between buttons */
+}
+
+.save-btn,
+.cancel-btn {
+  font-size: 16px;
+  padding: 12px 0;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* .save-btn is type="primary" which has default styles */
+
+.cancel-btn {
+  background-color: #eee; /* Lighter background for cancel */
+  color: #555;
+  border: 1px solid #ddd; /* Optional border */
+}
+
+/* Add styles for future city picker if needed */
+/*
+.city-picker-trigger {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+*/
+
+/* Hotel Image Upload Section Styles */
+.image-upload-section-hotel {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.image-upload-section-hotel .form-label {
+  margin-bottom: 8px; /* Ensure label has space */
+}
+
+.image-upload-section-hotel .image-preview-container-hotel {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-upload-section-hotel .image-preview-hotel {
+  width: 100%;
+  max-width: 250px; /* Slightly larger preview for hotel image */
+  height: auto;
+  max-height: 200px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+}
+
+.image-upload-section-hotel .image-action-btn {
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: none; /* Ensure no default border */
+  display: inline-block; /* Make buttons inline-block */
+  line-height: 1.5; /* Adjust line height for button text */
+}
+
+.image-upload-section-hotel .remove-image-btn-hotel {
+  background-color: #e74c3c;
+  color: white;
+  /* width: auto; */ /* Let it size by content or add specific width */
+  /* min-width: 100px; */
+  margin-left: 10px; /* Space it out if next to another button in future */
+}
+
+.image-upload-section-hotel .upload-image-btn-hotel {
+  background-color: #3498db;
+  color: white;
+  /* width: 100%; */ /* Or specific width */
+  /* max-width: 200px; */
+  /* margin: 5px auto; */ /* Remove auto margins if inline-block */
+}
+
+.image-upload-section-hotel .upload-image-btn-hotel.replace-image-btn-hotel {
+  background-color: #f39c12; /* Orange for replace */
+}
+
+.image-upload-section-hotel .upload-image-btn-hotel[loading] {
+  background-color: #95a5a6;
+  color: #e0e0e0;
+}
+
+.image-upload-section-hotel .upload-progress-text-hotel {
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  margin-top: 8px;
+  display: block; /* Ensure it takes its own line */
+} 

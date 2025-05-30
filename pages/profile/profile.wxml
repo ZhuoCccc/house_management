@@ -1,0 +1,51 @@
+<!-- Custom Navigation Bar -->
+<view class="custom-nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+  <view class="nav-bar-content" style="height: {{navBarHeight - statusBarHeight}}px; line-height: {{navBarHeight - statusBarHeight}}px;">
+    <view class="nav-title">{{navBarTitle}}</view>
+  </view>
+</view>
+
+<!-- Page Content Wrapper -->
+<view class="page-content-wrapper" style="padding-top: {{navBarHeight + statusBarHeight}}px;">
+  <view class="container profile-container">
+    <!-- User Profile Header -->
+    <view class="profile-header" bindtap="{{!isLoggedIn ? 'navigateToLogin' : ''}}">
+      <view class="avatar-placeholder"></view> <!-- Placeholder for avatar -->
+      <view class="user-info">
+        <text class="username">{{username}}</text>
+        <text wx:if="{{!isLoggedIn}}" class="login-prompt">点击登录</text>
+      </view>
+    </view>
+
+    <view class="section-header-title">菜单选项</view>
+    <!-- Menu Options -->
+    <view class="section menu-section">
+      <view class="menu-item" bindtap="navigateToMyOrders">
+        <view class="menu-item-main-content">
+          <text class="menu-icon">📝</text>
+          <text class="menu-label">我的订单</text>
+        </view>
+        <text class="menu-arrow">&gt;</text>
+      </view>
+      <!-- Add more menu items like Settings, Help, etc. here -->
+    </view>
+
+    <view class="section-header-title">更多</view>
+    <view class="section system-section">
+       <view class="menu-item" bindtap="navigateToSettings"> <!-- Assuming a navigateToSettings method or similar -->
+        <view class="menu-item-main-content">
+          <text class="menu-icon">⚙️</text>
+          <text class="menu-label">设置</text>
+        </view>
+        <text class="menu-arrow">&gt;</text>
+      </view>
+      <view class="menu-item" bindtap="handleLogout" wx:if="{{isLoggedIn}}">
+        <view class="menu-item-main-content centered-logout">
+            <text class="menu-icon">🚪</text> 
+            <text class="menu-label logout-label">退出登录</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view> 

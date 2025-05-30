@@ -1,0 +1,106 @@
+/* pages/admin/admin_hub_selection/admin_hub_selection.wxss */
+.page-container.admin-hub-selection-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f7f9; 
+  box-sizing: border-box;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 18px 15px; 
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.page-title {
+  font-size: 17px; 
+  font-weight: 600; 
+  color: #34495e; 
+}
+
+.hub-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+}
+
+.hub-welcome {
+  font-size: 18px; 
+  color: #34495e;
+  margin-bottom: 30px; 
+  line-height: 1.6;
+}
+
+.action-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 340px; 
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%; 
+  padding: 15px 20px; 
+  margin-bottom: 18px;
+  border-radius: 10px; 
+  font-size: 15px; /* 略微调整字体大小 */
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none; 
+  text-align: center;
+  color: white;
+}
+
+.action-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+.action-button.dashboard-btn {
+  background-image: linear-gradient(to right, #17a2b8, #138496); /* 青色系 */
+}
+
+.action-button.room-management-btn {
+  background-image: linear-gradient(to right, #007bff, #0056b3); /* 蓝色系 */
+}
+
+.action-button.user-management-btn {
+  background-image: linear-gradient(to right, #28a745, #1e7e34); /* 绿色系 */
+}
+
+.hub-footer {
+  padding: 20px;
+  padding-bottom: 30px; 
+  display: flex;
+  justify-content: center;
+}
+
+.logout-button-hub {
+  width: 80%;
+  max-width: 320px;
+  background-color: #ffffff;
+  color: #6c757d; 
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 12px 0;
+  border: 1px solid #ced4da; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logout-button-hub:active {
+  background-color: #f8f9fa;
+  border-color: #adb5bd;
+} 

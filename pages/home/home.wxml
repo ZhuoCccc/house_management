@@ -1,0 +1,111 @@
+<wxs module="formatter" src="./format.wxs"></wxs>
+
+<view class="home-page-wrapper">
+  <scroll-view 
+    scroll-y 
+    class="main-scroll-view"
+    enhanced="{{true}}"
+    show-scrollbar="{{false}}"
+    bounces="{{true}}"
+    scroll-anchoring="{{true}}"
+  >
+    <!-- 1. Top Hero/Banner Section -->
+    <view class="hero-section">
+      <image class="hero-background-image" src="cloud://cloud1-0gmfc74geebd1b50.636c-cloud1-0gmfc74geebd1b50-1360583575/banner.jpg" mode="aspectFill"></image>
+      <view class="hero-brand-name">{{brandName || '欢迎您'}}</view>
+    </view>
+
+    <!-- 2. Main Content Area -->
+    <view class="main-content-area">
+      <!-- 2a. Selection Card -->
+      <view class="selection-card">
+        <!-- Province/City Selector Trigger -->
+        <view class="store-selector" bindtap="openProvinceCityPicker">
+          <text class="store-selector-label">{{selectedProvinceCityText}}</text>
+          <view class="dropdown-icon">▼</view> 
+        </view>
+        
+        <!-- Date Picker -->
+        <view class="date-picker-wrapper">
+          <picker mode="date" value="{{checkIn && checkIn.fullDate ? formatter.formatDateForPicker(checkIn.fullDate) : ''}}" start="{{pickerMinDate}}" bindchange="bindCheckInChange">
+            <view class="date-section check-in-section">
+              <text class="date-label">入住日期</text>
+              <view class="date-value">{{checkIn.dateString || '选择日期'}}</view>
+              <view class="day-of-week">{{checkIn.dayOfWeek}}</view>
+            </view>
+          </picker>
+
+          <view class="nights-display-column">
+            <view class="nights-value">共{{numberOfNights}}晚</view>
+          </view>
+
+          <picker mode="date" value="{{checkOut && checkOut.fullDate ? formatter.formatDateForPicker(checkOut.fullDate) : ''}}" start="{{checkIn && checkIn.fullDate ? formatter.formatDateForPicker(checkIn.fullDate) : pickerMinDate}}" bindchange="bindCheckOutChange">
+            <view class="date-section check-out-section">
+              <text class="date-label">退房日期</text>
+              <view class="date-value">{{checkOut.dateString || '选择日期'}}</view>
+              <view class="day-of-week">{{checkOut.dayOfWeek}}</view>
+            </view>
+          </picker>
+          <view class="date-arrow-indicator">❯</view>
+        </view>
+      </view>
+
+      <!-- Search Bar -->
+      <view class="search-bar-container">
+        <input
+          class="search-input"
+          placeholder="搜索酒店名称或位置"
+          value="{{searchQuery}}"
+          bindinput="handleSearchInput"
+          confirm-type="search"
+          bindconfirm="handleSearchConfirm" 
+        />
+        <button class="clear-search-btn" wx:if="{{searchQuery}}" bindtap="clearSearchQuery">清除</button>
+      </view>
+
+      <!-- 2c. Hotel List Section -->
+      <view class="hotel-list-heading" wx:if="{{displayedHotels.length > 0}}">精选推荐</view>
+      <view class="hotel-list-items-container"> 
+        <view class="hotel-card-item" wx:for="{{displayedHotels}}" wx:key="id" bindtap="navigateToHotelRoomList" data-jsonfilecloudid="{{item.jsonFileCloudID}}">
+          <view class="hotel-image-wrapper">
+            <image class="hotel-image" src="{{item.displayImageSrc}}" mode="aspectFill" lazy-load="true"></image>
+            <view class="hotel-card-top-tag" wx:if="{{item.specialTag}}">{{item.specialTag}}</view>
+            <view class="hotel-card-city-tag" wx:if="{{item.cityName}}">{{item.cityName}}</view>
+            <view class="hotel-card-location-tag">{{item.locationShort || item.name}}</view> 
+          </view>
+          <view class="hotel-info-details">
+            <text class="hotel-title">{{item.name}}</text>
+            <text class="hotel-subtitle">{{item.description}}</text>
+            <view class="hotel-price-line">
+              <text class="hotel-price-currency">¥</text>
+              <text class="hotel-price-value">{{item.price || '12800'}}</text> 
+              <text class="hotel-price-suffix">起</text>
+              <text class="hotel-member-discount" wx:if="{{item.memberDiscount}}">会员可享受优惠</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{!displayedHotels || displayedHotels.length === 0}}" class="empty-hotel-list-message">
+          <text>{{currentSelectedCityName ? '当前城市暂无推荐酒店' : '暂无酒店信息'}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- Province/City Picker Popup -->
+  <view class="picker-popup-mask {{showProvinceCityPicker ? 'active' : ''}}" bindtap="closeProvinceCityPicker"></view>
+  <view class="province-city-picker-container {{showProvinceCityPicker ? 'active' : ''}}">
+    <view class="picker-header">
+      <text class="picker-btn cancel-btn" bindtap="closeProvinceCityPicker">取消</text>
+      <text class="picker-title">选择城市</text>
+      <text class="picker-btn confirm-btn" bindtap="onProvinceCityConfirm">确定</text>
+    </view>
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 250px;" value="{{pickerValue}}" bindchange="handleProvinceCityChange">
+      <picker-view-column>
+        <view wx:for="{{provinces}}" wx:key="key" style="line-height: 50px; text-align: center;">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{cities}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view> 

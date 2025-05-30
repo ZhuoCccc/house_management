@@ -1,0 +1,6 @@
+<view class="container">
+  <icon type="success" size="64"></icon>
+  <text class="message">订单提交成功！</text>
+  <button bindtap="viewMyOrders">查看我的订单</button>
+  <button bindtap="backToHome">返回首页</button>
+</view> 

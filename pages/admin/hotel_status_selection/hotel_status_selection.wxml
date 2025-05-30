@@ -1,0 +1,49 @@
+<view class="page-container">
+  <text class="page-title">酒店房间状态实时管理</text>
+
+  <view wx:if="{{isLoading}}" class="loading-container">
+    <text>正在加载酒店及房态信息...</text>
+  </view>
+
+  <view wx:if="{{!isLoading && errorLoading}}" class="error-container">
+    <text>{{errorLoading}}</text>
+    <button bindtap="loadHotelsAndIndividualRooms" class="retry-button">重试加载</button>
+  </view>
+
+  <scroll-view scroll-y class="hotels-rooms-list-container" wx:if="{{!isLoading && !errorLoading && hotels.length > 0}}">
+    <block wx:for="{{hotels}}" wx:for-item="hotel" wx:for-index="hotelIdx" wx:key="jsonFileCloudID">
+      <view class="hotel-section-card">
+        <view class="hotel-name-header">{{hotel.name}}</view>
+        
+        <view wx:if="{{hotel.rooms && hotel.rooms.length > 0}}" class="rooms-list">
+          <view class="room-item-header-row">
+            <text class="room-header-text room-number-header">房号</text>
+            <text class="room-header-text room-status-header">当前状态</text>
+            <text class="room-header-text room-action-header">操作</text>
+          </view>
+          <block wx:for="{{hotel.rooms}}" wx:for-item="room" wx:for-index="roomIdx" wx:key="id">
+            <view class="room-item-row">
+              <text class="room-detail-text room-number-detail">{{room.roomNumber}}</text>
+              <text class="room-detail-text room-status-detail status-{{room.status}}">{{room.status}}</text>
+              <button 
+                class="change-status-btn"
+                size="mini" 
+                bindtap="handleChangeRoomStatus"
+                data-hotel-index="{{hotelIdx}}"
+                data-room-index="{{roomIdx}}"
+                data-room-id="{{room.id}}"
+              >更改状态</button>
+            </view>
+          </block>
+        </view>
+        <view wx:else class="no-rooms-message">
+          <text>此酒店暂无房间信息或房间数据加载失败。</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view wx:if="{{!isLoading && !errorLoading && hotels.length === 0}}" class="empty-list-message">
+    <text>没有可管理的酒店信息。</text>
+  </view>
+</view> 

@@ -1,0 +1,161 @@
+.container {
+  padding: 20px;
+  text-align: center;
+}
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Custom Navigation Bar Styles */
+.custom-nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background-color: #fff; /* White nav bar background */
+  box-sizing: border-box;
+  border-bottom: 1px solid #f0f0f0; /* Light border for separation */
+}
+.nav-bar-content { position: relative; display: flex; align-items: center; justify-content: center; padding: 0 15px; box-sizing: border-box; }
+.nav-title { font-size: 17px; color: #333; /* Dark title text */ font-weight: 500; }
+
+/* Page Content Wrapper */
+.page-content-wrapper {
+  background-color: #f8f8f8;
+  min-height: 100vh; box-sizing: border-box;
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 15px; /* Add some padding at the bottom of the page */
+  overflow-y: auto; /* Ensure vertical scrolling */
+}
+
+.profile-container {
+  padding-bottom: 20px; box-sizing: border-box; width: 100%;
+}
+
+/* Profile Header - Styled as a card */
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 25px 20px; /* Internal padding for the card content */
+  background-color: #fff;
+  border-radius: 10px; /* Consistent with section cards */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  width: 90%; /* Card width */
+  max-width: 380px; /* Max card width */
+  margin: 20px auto 20px auto; /* Centering and vertical margin */
+}
+
+.avatar-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Keep circular avatar */
+  background-color: #f0f0f0; /* Consistent placeholder background */
+  margin-right: 18px; /* More space next to avatar */
+  display: flex; align-items: center; justify-content: center; 
+  font-size: 28px; /* Larger icon in avatar */
+  color: #ccc;
+}
+.avatar-placeholder::after {
+  content: "👤"; /* User icon */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Increased gap */
+}
+
+.username {
+  font-size: 20px; /* Slightly larger username */
+  font-weight: 600;
+  color: #333;
+}
+
+.login-prompt {
+  font-size: 14px;
+  color: #888;
+  /* margin-top: 4px; gap handles this now */
+}
+
+/* New Section Header Title Style */
+.section-header-title {
+  font-size: 14px;
+  color: #888888;
+  padding: 20px 0px 8px 0px; /* Top, Horizontal (0), Bottom */
+  line-height: 1.2;
+  width: 90%; /* Align with cards */
+  max-width: 380px; /* Align with cards */
+  margin: 0 auto; /* Center the title block */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Section Card Styles */
+.section {
+  background-color: #fff;
+  margin: 0 auto 15px auto; /* Centering and bottom margin */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  width: 90%; /* Card width */
+  max-width: 380px; /* Max card width */
+  box-sizing: border-box;
+  overflow: hidden; /* Ensure borders of items inside are contained by border-radius */
+}
+
+.menu-section {
+  /* Specific margins if needed, but defaults from .section should apply */
+}
+.system-section {
+  /* Specific margins if needed */
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 18px; /* Increased vertical padding for spaciousness */
+  min-height: 30px; /* Content height itself, overall height will be this + padding */
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0; /* Slightly more visible border */
+  cursor: pointer;
+  background-color: #fff; /* Explicit white background */
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-main-content {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-main-content.centered-logout {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.menu-icon {
+  font-size: 20px; /* Adjusted icon size */
+  margin-right: 15px; /* Space between icon and label */
+  color: #555555; /* Darker icon color */
+  width: 24px; /* Fixed width for alignment */
+  text-align: center;
+}
+
+.menu-label {
+  flex-shrink: 0;
+  color: #333;
+}
+
+.logout-label {
+    color: #e74c3c; /* A slightly softer red */
+    font-weight: 500;
+}
+
+.menu-arrow {
+  color: #cccccc; /* Slightly darker arrow for better visibility */
+  font-size: 18px;
+  margin-left: 8px;
+} 

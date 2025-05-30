@@ -1,0 +1,23 @@
+var formatDateForPicker = function(date) {
+  // Check if date is an object and has the getFullYear method
+  if (!date || typeof date.getFullYear !== 'function') {
+    // If it's not a valid Date object (or something that quacks like one),
+    // return an empty string or a placeholder.
+    // This handles null, undefined, strings, numbers, and other non-Date objects.
+    return ''; 
+  }
+
+  var year = date.getFullYear();
+  var month = (date.getMonth() + 1).toString();
+  var day = date.getDate().toString();
+  
+  // Ensure two digits for month and day
+  month = month.length > 1 ? month : '0' + month;
+  day = day.length > 1 ? day : '0' + day;
+  
+  return year + '-' + month + '-' + day;
+};
+
+module.exports = {
+  formatDateForPicker: formatDateForPicker
+}; 

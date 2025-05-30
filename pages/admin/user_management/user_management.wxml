@@ -1,0 +1,105 @@
+<view class="page-container user-management-page">
+  <!-- 自定义导航栏占位 -->
+  <view style="height: {{navBarHeight}}px;"></view>
+
+  <view class="page-header">
+    <text class="page-title">用户管理</text>
+    <button class="add-btn" type="primary" bindtap="openAddModal">＋ 添加用户</button>
+  </view>
+
+  <!-- Search Bar -->
+  <view class="search-bar-container-um">
+    <input
+      class="search-input-um"
+      placeholder="搜索用户名称或邮箱"
+      value="{{searchQuery}}"
+      bindinput="handleSearchInput"
+      confirm-type="search"
+      bindconfirm="handleSearchConfirm"
+    />
+    <button class="clear-search-btn-um" wx:if="{{searchQuery}}" bindtap="clearSearchQuery">清除</button>
+  </view>
+
+  <scroll-view scroll-y class="list-container">
+    <view class="user-list" wx:if="{{displayedUsers.length > 0}}">
+      <view class="user-item" wx:for="{{displayedUsers}}" wx:key="id">
+        <view class="user-details">
+          <text class="username">{{item.username}} <text class="user-type">({{item.type}})</text></text>
+          <text class="user-email">邮箱: {{item.email}}</text>
+          <text class="user-id">ID: {{item.id}}</text>
+          <text class="user-password">密码: {{item.password}}</text>
+        </view>
+        <view class="user-actions">
+          <button class="edit-btn" size="mini" bindtap="openEditModal" data-filename="{{item.fileName}}">编辑</button>
+          <button class="delete-btn" type="warn" size="mini" bindtap="confirmCloudDeleteUser" data-filename="{{item.fileName}}">删除</button>
+        </view>
+      </view>
+    </view>
+    <view class="empty-list" wx:else>
+      <text>{{isLoading ? '加载中...' : (searchQuery ? '未找到匹配的用户' : '暂无用户信息，请点击上方按钮添加。')}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 添加用户模态框 -->
+  <view class="modal-overlay" wx:if="{{showAddModal}}" bindtap="closeAddModal"></view>
+  <view class="modal-content add-user-modal" wx:if="{{showAddModal}}">
+    <view class="modal-header"><text class="modal-title">添加新用户</text></view>
+    <view class="modal-body">
+      <view class="form-group">
+        <text class="form-label">用户名:</text>
+        <input class="form-input" value="{{newUser.username}}" bindinput="handleAddInputChange" data-field="username" placeholder="输入用户名" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">密码:</text>
+        <input class="form-input" type="text" password="{{true}}" value="{{newUser.password}}" bindinput="handleAddInputChange" data-field="password" placeholder="输入初始密码" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">邮箱:</text>
+        <input class="form-input" type="text" value="{{newUser.email}}" bindinput="handleAddInputChange" data-field="email" placeholder="输入邮箱地址" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">用户类型:</text>
+        <picker class="form-picker" bindchange="handleAddUserTypeChange" value="{{newUser.type}}" range="{{userTypes}}">
+          <view class="picker-text">{{newUser.type}} <text class="dropdown-arrow">▼</text></view>
+        </picker>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-button cancel" bindtap="closeAddModal">取消</button>
+      <button class="modal-button confirm" bindtap="confirmAddUser">确认添加</button>
+    </view>
+  </view>
+
+  <!-- 编辑用户模态框 -->
+  <view class="modal-overlay" wx:if="{{showEditModal}}" bindtap="closeEditModal"></view>
+  <view class="modal-content edit-user-modal" wx:if="{{showEditModal}}">
+    <view class="modal-header"><text class="modal-title">编辑用户信息</text></view>
+    <view class="modal-body">
+      <view class="form-group">
+        <text class="form-label">用户名:</text>
+        <input class="form-input" value="{{editingUser.username}}" bindinput="handleEditInputChange" data-field="username" placeholder="输入用户名" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">新密码:</text>
+        <input class="form-input" type="text" value="{{editingUser.newPassword}}" bindinput="handleEditInputChange" data-field="newPassword" placeholder="留空则不修改密码" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">邮箱:</text>
+        <input class="form-input" type="text" value="{{editingUser.email}}" bindinput="handleEditInputChange" data-field="email" placeholder="输入邮箱地址" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">用户类型:</text>
+        <picker class="form-picker" bindchange="handleEditUserTypeChange" value="{{editingUser.type}}" range="{{userTypes}}">
+          <view class="picker-text">{{editingUser.type}} <text class="dropdown-arrow">▼</text></view>
+        </picker>
+      </view>
+      <view class="form-group info-text">
+        <text>密码字段：若要修改密码，请输入新密码。若留空，则用户现有密码将保持不变。</text>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-button cancel" bindtap="closeEditModal">取消</button>
+      <button class="modal-button confirm" bindtap="confirmEditUser">保存更改</button>
+    </view>
+  </view>
+</view> 

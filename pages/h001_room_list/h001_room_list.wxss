@@ -1,0 +1,258 @@
+/* Remove or comment out the old .container style */
+/*
+.container {
+  padding: 12px;
+  background-color: #f7f8fa; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto; 
+}
+*/
+
+/* New style for the scroll-view wrapper */
+.container-scrollable {
+  width: 100%;
+  height: 100vh; /* Crucial for scroll-view to work */
+  box-sizing: border-box;
+  background-color: #f7f8fa; /* Keep background color */
+}
+
+/* New wrapper for content inside scroll-view to handle padding */
+.room-list-content-wrapper {
+  padding: 12px; /* Apply original container padding here */
+}
+
+.page-title {
+  font-size: 20px; /* Slightly smaller */
+  font-weight: 600; /* Bolder */
+  color: #323233;
+  text-align: center;
+  margin-bottom: 18px; /* More space */
+  display: block;
+}
+
+.info-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 12px 10px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: #646566;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.room-list {
+  padding-bottom: 10px; /* Space at the end of the list */
+  /* This class is now inside room-list-content-wrapper, adjust if needed */
+}
+
+.room-item-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: none;
+}
+
+.room-item-card.unavailable {
+  opacity: 0.75; /* Keep it slightly more opaque if unavailable */
+}
+
+/* NEW: Left Column - Image Container */
+.room-image-container {
+  width: 120px; /* Adjust as needed, example from reference */
+  flex-shrink: 0; /* Prevent shrinking */
+  padding: 12px; /* Padding around the image placeholder */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-image-placeholder {
+  width: 100%; /* Take full width of container */
+  padding-top: 75%; /* Aspect ratio 4:3 for placeholder height */
+  background-color: #f2f3f5;
+  border-radius: 8px;
+  display: flex; /* Keep for centering text if no actual image */
+  align-items: center;
+  justify-content: center;
+  color: #c8c9cc;
+  font-size: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.room-image-placeholder::after {
+  content: "暂无图片"; /* More descriptive */
+  color: #969799;
+}
+
+.room-status-badge {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 10px;
+  font-weight: 500;
+  color: white;
+  padding: 3px 7px;
+  border-bottom-right-radius: 8px; /* Styling for badge */
+  z-index: 1;
+  letter-spacing: 0.5px;
+}
+.room-status-badge.kongxian { background-color: #4CAF50;} /* Green */
+.room-status-badge.ruzhu { background-color: #F44336;} /* Red */
+.room-status-badge.dasao { background-color: #FFC107;} /* Amber */
+.room-status-badge.weixiu { background-color: #607D8B;} /* Blue Grey */
+.room-status-badge.default { background-color: #9E9E9E; } /* Fallback color */
+
+/* NEW: Right Column - Info Container */
+.room-info-column {
+  flex: 1; /* Takes remaining space */
+  padding: 12px 12px 12px 0; /* Padding on 3 sides */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Key for pushing price/actions down */
+  min-height: 120px; /* Ensure a minimum height, adjust with image */
+}
+
+/* Was .room-details, now specific to main textual info */
+.room-main-details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px; /* Space before price/actions if they are close */
+}
+
+.room-name-number {
+  margin-bottom: 6px;
+}
+
+.room-type-title {
+  font-size: 16px; /* Prominent title */
+  font-weight: 600;
+  color: #1f1f1f; /* Darker for title */
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.room-number-info {
+  font-size: 12px; /* Slightly larger for clarity */
+  color: #666;
+  display: block;
+  line-height: 1.3;
+  margin-bottom: 8px; /* Space before amenities */
+}
+
+/* Optional: Styles for ratings/distance if added later */
+/*
+.room-ratings-distance {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 8px;
+}
+.room-ratings-distance .rating {
+  margin-right: 8px;
+  color: #ff6034; 
+}
+*/
+
+.room-price {
+  font-size: 18px; /* Prominent price */
+  font-weight: bold;
+  color: #ff4d4f; /* Common price color */
+  line-height: 1;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #888;
+  margin-right: 2px;
+  align-self: flex-end; /* Align with bottom of price */
+  margin-bottom: 2px; /* Fine-tune alignment */
+}
+
+.currency-symbol {
+  font-size: 0.8em; /* Smaller currency symbol */
+  margin-right: 1px;
+}
+
+.price-suffix {
+  font-size: 0.7em;
+  color: #888;
+  margin-left: 1px;
+}
+
+.room-amenities {
+  margin-bottom: 8px; /* Space after amenities */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Slightly reduced gap */
+}
+
+.amenity-tag {
+  background-color: #f5f5f5; /* Lighter tag background */
+  color: #555;
+  font-size: 10px;
+  padding: 3px 7px; /* Adjust padding */
+  border-radius: 3px;
+}
+
+/* NEW: Container for Price and Actions, aligned to bottom of info column */
+.room-price-actions {
+  display: flex;
+  justify-content: space-between; /* Price left, Actions right */
+  align-items: flex-end; /* Align items to their baseline */
+  margin-top: auto; /* Push this block to the bottom */
+  padding-top: 8px; /* Space above this section */
+}
+
+/* NEW: Container for price elements */
+.price-container {
+  display: flex;
+  align-items: baseline; /* Align price and label nicely */
+}
+
+/* NEW: Container for action button/text */
+.actions-container {
+}
+
+.book-button {
+  background-image: linear-gradient(to right, #FF7043, #FF5722); /* Orange gradient */
+  color: white;
+  padding: 7px 14px; /* Slightly smaller padding for a more compact button */
+  border-radius: 18px; /* Rounded */
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 2px 4px rgba(255, 87, 34, 0.3);
+  transition: all 0.2s ease;
+  min-width: auto; /* Let content define width or set a smaller min-width */
+  text-align: center;
+}
+.book-button:active {
+  opacity: 0.8;
+  box-shadow: 0 1px 3px rgba(255, 87, 34, 0.2);
+}
+
+.status-unavailable-text {
+  font-size: 13px;
+  color: #969799;
+  padding: 9px 0;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 50px 20px;
+  color: #969799;
+  font-size: 14px;
+  /* Could add an icon here later via ::before or an image tag */
+} 

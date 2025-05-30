@@ -1,0 +1,115 @@
+<!--pages/admin/manage_room_types/manage_room_types.wxml-->
+<view class="page-container">
+  <!-- Custom Navigation Bar -->
+  <view class="custom-nav-bar-room-types" style="padding-top: {{statusBarHeight}}px;">
+    <view class="back-icon-wrapper" bindtap="navigateBack">
+      <view class="back-icon"></view>
+    </view>
+    <view class="nav-title-room-types">{{hotelName}} - 房型管理</view>
+  </view>
+
+  <scroll-view scroll-y class="main-scrollable-area">
+    <view class="page-title-container">
+      <text class="page-main-title">房型列表</text>
+      <button class="add-room-type-btn" bindtap="showAddRoomTypeModal">添加房型</button>
+    </view>
+
+    <!-- Search Bar -->
+    <view class="search-bar-container-mrt">
+      <input
+        class="search-input-mrt"
+        placeholder="搜索房型名称或房号"
+        value="{{searchQuery}}"
+        bindinput="handleSearchInput"
+        confirm-type="search"
+        bindconfirm="handleSearchConfirm"
+      />
+      <button class="clear-search-btn-mrt" wx:if="{{searchQuery}}" bindtap="clearSearchQuery">清除</button>
+    </view>
+
+    <view class="room-type-list">
+      <block wx:if="{{displayedRoomTypes.length > 0}}">
+        <view wx:for="{{displayedRoomTypes}}" wx:key="id" class="room-type-item">
+          <view class="room-type-header">
+            <text class="room-type-name">{{item.type}}</text>
+            <view class="room-type-actions">
+              <button class="edit-room-type-btn" bindtap="showEditRoomTypeModal" data-roomid="{{item.id}}">编辑</button>
+              <button class="delete-room-type-btn" bindtap="confirmDeleteRoomType" data-roomid="{{item.id}}" data-roomtype="{{item.type}}">删除</button>
+            </view>
+          </view>
+          <view class="room-type-details-grid">
+            <view class="detail-item"><text>房号:</text> <text>{{item.roomNumber || 'N/A'}}</text></view>
+            <view class="detail-item"><text>价格:</text> <text>¥{{item.price || 0}}</text></view>
+            <view class="detail-item"><text>楼层:</text> <text>{{item.floor || 'N/A'}}</text></view>
+            <view class="detail-item"><text>状态:</text> <text>{{item.status || 'N/A'}}</text></view>
+          </view>
+          <view class="detail-item" style="margin-top: 5px;"><text>设施:</text> <text>{{item.amenities && item.amenities.length > 0 ? item.amenities.join(', ') : '暂无'}}</text></view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="empty-list-message">{{isLoading ? '加载中...' : (searchQuery ? '未找到匹配的房型' : '该酒店暂无房型信息，请添加。')}}</view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- Add/Edit Room Type Modal - Custom Implementation -->
+  <view class="modal-overlay" wx:if="{{showModal}}" bindtap="hideModal"></view>
+  <view class="modal-container" wx:if="{{showModal}}">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">{{isEditingRoomType ? '编辑房型' : '添加新房型'}}</text>
+      </view>
+      <view class="modal-body">
+        <scroll-view scroll-y="true" style="height: 100%;">
+          <view class="modal-input-container">
+            <label>房型名称 <text class="required-star">*</text></label>
+            <input placeholder="如：豪华大床房" value="{{currentRoomType.type}}" bindinput="handleModalInputChange" data-field="type" class="modal-input"/>
+          </view>
+          <view class="modal-input-container">
+            <label>房间号码 <text class="required-star">*</text></label>
+            <input placeholder="如：8101" value="{{currentRoomType.roomNumber}}" bindinput="handleModalInputChange" data-field="roomNumber" class="modal-input"/>
+          </view>
+          <view class="modal-input-container">
+            <label>价格 (元) <text class="required-star">*</text></label>
+            <input type="digit" placeholder="如：299" value="{{currentRoomType.price}}" bindinput="handleModalInputChange" data-field="price" class="modal-input"/>
+          </view>
+          <view class="modal-input-container">
+            <label>楼层</label>
+            <input placeholder="如：8F 或 L1" value="{{currentRoomType.floor}}" bindinput="handleModalInputChange" data-field="floor" class="modal-input"/>
+          </view>
+          <view class="modal-input-container">
+            <label>当前状态</label>
+            <input placeholder="如：空闲, 入住, 打扫中" value="{{currentRoomType.status}}" bindinput="handleModalInputChange" data-field="status" class="modal-input"/>
+          </view>
+          <view class="modal-input-container">
+            <label>房间设施 (英文逗号隔开)</label>
+            <textarea placeholder="如：空调,电视,Wi-Fi" value="{{currentRoomType.amenitiesString}}" bindinput="handleModalInputChange" data-field="amenitiesString" class="modal-textarea"/>
+          </view>
+
+          <!-- NEW: Room Type Video Upload Section -->
+          <view class="modal-input-container video-upload-section">
+            <label>房型视频</label>
+            <view class="video-preview-container" wx:if="{{currentRoomType.roomTypeVideoFileID}}">
+              <video class="video-preview" src="{{currentRoomType.roomTypeVideoFileID}}" controls style="width: 100%; max-height: 200px;"></video>
+              <button class="video-action-btn remove-video-btn" size="mini" type="warn" bindtap="removeRoomTypeVideo">移除视频</button>
+            </view>
+            <button 
+              class="video-action-btn upload-video-btn {{currentRoomType.roomTypeVideoFileID ? 'replace-video-btn' : ''}}"
+              bindtap="uploadRoomTypeVideo"
+              loading="{{isUploadingVideo}}"
+              disabled="{{isUploadingVideo}}"
+            >
+              {{currentRoomType.roomTypeVideoFileID ? '替换视频' : '上传视频'}}
+            </button>
+            <view wx:if="{{isUploadingVideo}}" class="upload-progress-text">视频上传中...</view>
+          </view>
+          <!-- END: Room Type Video Upload Section -->
+        </scroll-view>
+      </view>
+      <view class="modal-footer">
+        <button class="modal-button cancel" bindtap="hideModal">取消</button>
+        <button class="modal-button confirm" bindtap="handleSaveRoomType">{{isEditingRoomType ? '保存更改' : '确认添加'}}</button>
+      </view>
+    </view>
+  </view>
+</view> 

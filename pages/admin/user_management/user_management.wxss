@@ -1,0 +1,151 @@
+/* 继承或复用 management_hub.wxss 中的部分样式 */
+@import "../management_hub/management_hub.wxss"; /* 如果路径正确且希望复用 */
+
+/* 用户管理页面特定样式 */
+
+/* 确保 page-container 是一个 flex column，并且有最小高度 */
+.page-container.user-management-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  box-sizing: border-box;
+  background-color: #f4f4f4; /* Assuming similar background as dashboard */
+  padding: 15px; /* Assuming similar padding */
+}
+
+.user-management-page .page-header {
+  width: 100%;
+  padding: 10px 0; /* Adjusted padding */
+  margin-bottom: 15px;
+  display: flex; /* Use flex to align title and button */
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  /* background-color: #fff; /* Optional: if header needs a distinct background */
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.05); */
+}
+
+.user-management-page .page-header .page-title {
+  font-size: 20px; 
+  font-weight: bold;
+  color: #333;
+}
+
+.user-management-page .page-header .add-btn {
+  /* Button styling can be refined */
+  /* font-size: 14px; */ /* Let default button styles apply or customize as needed */
+}
+
+/* Search Bar Styles for User Management */
+.search-bar-container-um {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* Space before the user list */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.search-input-um {
+  flex-grow: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #dcdfe6; /* Lighter border */
+  border-radius: 6rpx;
+  margin-right: 15rpx;
+  background-color: #fff;
+}
+
+.clear-search-btn-um {
+  background-color: #e74c3c; /* Consistent clear button color */
+  color: white;
+  font-size: 24rpx;
+  padding: 0 25rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  border-radius: 6rpx;
+  border: none;
+  flex-shrink: 0;
+}
+/* End Search Bar Styles for User Management */
+
+.list-container { /* This is the class for the scroll-view */
+  width: 100%;
+  flex: 1; /* Allow scroll-view to take remaining space */
+  min-height: 100px; /* Prevent collapse */
+  box-sizing: border-box;
+}
+
+.user-item {
+  background-color: #fff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 改为 flex-start 以便详情垂直排列 */
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.user-details .username {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.user-details .user-type {
+  font-size: 12px;
+  color: #757575;
+  margin-left: 5px;
+}
+
+.user-details .user-email,
+.user-details .user-id {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 2px;
+  word-break: break-all; /* 防止邮箱或ID过长溢出 */
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column; /* 编辑和删除按钮垂直排列 */
+  align-items: flex-end;
+}
+
+.user-actions .edit-btn,
+.user-actions .delete-btn {
+  font-size: 13px;
+  padding: 4px 8px;
+  min-width: 60px; /* 给按钮一个最小宽度 */
+}
+
+.user-actions .edit-btn {
+  margin-bottom: 8px; /* 按钮间距 */
+  background-color: #17a2b8; /* 示例颜色 */
+  color: white;
+}
+
+/* 模态框中的提示文本 */
+.modal-body .info-text {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  text-align: left;
+}
+
+/* 其他模态框、表单样式可复用 management_hub.wxss 或在此处定义 */
+.add-user-modal .form-input[type="password"] {
+  /* 可为密码输入框添加特定样式 */
+} 

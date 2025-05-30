@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="login-form">
+    <view class="title">欢迎回来</view>
+    <view class="subtitle">请登录您的账号</view>
+
+    <view class="form-item">
+      <view class="form-label">用户名</view>
+      <view class="input-wrapper">
+        <!-- <image class="icon" src="/static/images/user-icon.png"></image> -->
+        <input class="input" type="text" placeholder="请输入用户名" value="{{username}}" bindinput="bindUsernameInput" />
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">密码</view>
+      <view class="input-wrapper">
+        <!-- <image class="icon" src="/static/images/lock-icon.png"></image> -->
+        <input class="input" type="password" placeholder="请输入密码" value="{{password}}" bindinput="bindPasswordInput" />
+      </view>
+    </view>
+
+    <button class="login-button" bindtap="login">登录</button>
+
+    <view class="register-link">
+      <text>还没有账号?</text>
+      <text class="register-now" bindtap="navigateToRegister">立即注册</text>
+    </view>
+  </view>
+</view> 

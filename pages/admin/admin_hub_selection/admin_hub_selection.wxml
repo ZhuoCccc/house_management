@@ -1,0 +1,29 @@
+<view class="page-container admin-hub-selection-page">
+  <view style="height: {{navBarHeight}}px;"></view>
+
+  <view class="page-header">
+    <text class="page-title">管理中心</text>
+  </view>
+
+  <view class="hub-content">
+    <text class="hub-welcome">欢迎您，{{adminUsername}}！请选择操作：</text>
+    <view class="action-buttons-container">
+      <button class="action-button dashboard-btn" bindtap="navigateToHotelStatusSelection">
+        <text>酒店房间动态</text>
+      </button>
+      <button class="action-button room-management-btn" bindtap="navigateToRoomManagement">
+        <text>酒店管理 (增/删)</text>
+      </button>
+      <button class="action-button user-management-btn" bindtap="navigateToUserManagement">
+        <text>用户管理 (增/删/改)</text>
+      </button>
+      <button class="action-button pending-cleanup-btn" bindtap="navigateToPendingCleanupLog">
+        <text>待清理图片日志</text>
+      </button>
+    </view>
+  </view>
+
+  <view class="hub-footer">
+    <button class="logout-button-hub" type="default" bindtap="logoutAdminHub">退出登录</button>
+  </view>
+</view> 

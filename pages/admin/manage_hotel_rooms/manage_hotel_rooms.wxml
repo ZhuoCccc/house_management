@@ -1,0 +1,28 @@
+<view class="page-container">
+  <text class="hotel-title">{{hotelName}}</text>
+  <!-- <text class="date-info">当前日期: {{currentDate}}</text> --> <!-- Optional date display -->
+
+  <scroll-view scroll-y class="room-list">
+    <block wx:if="{{rooms && rooms.length > 0}}">
+      <view class="room-item" wx:for="{{rooms}}" wx:key="id">
+        <view class="room-info">
+          <text class="room-number-type">房间 {{item.roomNumber}} ({{item.type}})</text>
+          <text class="current-status {{statusClassMap[item.status] || 'default'}}">{{item.status}}</text>
+        </view>
+        <view class="status-picker">
+          <text class="status-picker-label">修改状态为:</text>
+          <picker bindchange="onStatusChange" value="{{roomStatuses.indexOf(item.status)}}" range="{{roomStatuses}}" data-roomid="{{item.id}}" data-roomindex="{{index}}">
+            <view class="picker">
+              当前选择：{{roomStatuses[roomStatuses.indexOf(item.status)] || '选择状态'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-list-message">
+        <text>该酒店暂无房间数据或无法加载房间。</text>
+      </view>
+    </block>
+  </scroll-view>
+</view> 

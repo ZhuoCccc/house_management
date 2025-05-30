@@ -1,0 +1,334 @@
+/* pages/admin/manage_room_types/manage_room_types.wxss */
+.page-container {
+  /* padding: 15px;  Let main-scrollable-area handle padding */
+  min-height: 100vh;
+  height: 100vh; /* Ensure it takes full viewport height */
+  box-sizing: border-box;
+  background-color: #f7f7f7; /* Slightly lighter gray */
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Custom Navigation Bar */
+.custom-nav-bar-room-types {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px; /* Adjusted padding */
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  /* margin-bottom: 25px; Removed, as main-scrollable-area will have padding */
+  position: relative; 
+  height: 48px; /* Standard height */
+  flex-shrink: 0; /* Prevent nav from shrinking */
+}
+
+.back-icon-wrapper {
+  position: absolute; /* For precise positioning */
+  left: 12px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Tappable area */
+}
+
+.back-icon::before {
+ content: "\276E"; 
+ font-size: 20px; /* Slightly smaller */
+ color: #555; /* Darker for better contrast */
+}
+
+.nav-title-room-types {
+  font-size: 18px; /* Slightly larger title */
+  font-weight: 600; /* Semibold */
+  color: #2c3e50; /* Darker, more professional color */
+  text-align: center;
+  flex-grow: 1;
+  line-height: 48px; /* Align with nav bar height */
+}
+
+.page-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px; /* Adjusted margin */
+  padding: 0 5px; /* Added slight horizontal padding */
+}
+
+.page-main-title {
+  font-size: 20px; /* Increased size */
+  font-weight: 600;
+  color: #34495e;
+}
+
+.add-room-type-btn {
+  background-color: #3498db; /* A more modern blue */
+  color: white;
+  font-size: 14px;
+  padding: 9px 18px; /* Adjusted padding */
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s ease;
+}
+.add-room-type-btn:active {
+  background-color: #2980b9;
+}
+
+/* New styles for scrollable area */
+.main-scrollable-area {
+  flex: 1; /* Takes up remaining vertical space */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 20px; /* Add padding inside the scrollable area */
+  box-sizing: border-box;
+}
+
+.room-type-list {
+  /* flex-grow: 1; Removed as main-scrollable-area handles flex distribution */
+  padding-bottom: 20px; /* Add some space at the bottom of the list */
+}
+
+.room-type-item {
+  background-color: #ffffff;
+  padding: 18px; /* Increased padding */
+  margin-bottom: 15px; /* Increased margin */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.room-type-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.room-type-name {
+  font-size: 18px; /* Slightly larger */
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.room-type-actions button {
+  font-size: 13px;
+  padding: 6px 12px;
+  margin-left: 10px;
+  border-radius: 5px;
+  transition: opacity 0.2s ease;
+}
+.room-type-actions button:active {
+  opacity: 0.7;
+}
+
+.edit-room-type-btn {
+  background-color: #f0ad4e; /* Orange for edit */
+  color: white;
+  border: none;
+}
+
+.delete-room-type-btn {
+  background-color: #e74c3c; /* Softer red */
+  color: white;
+  border: none;
+}
+
+.room-type-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
+  gap: 10px; /* Increased gap */
+  font-size: 14px; /* Increased font size */
+  color: #555;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0; /* Separator line */
+  margin-top: 10px;
+}
+
+.detail-item {
+  padding: 3px 0; /* Added vertical padding */
+}
+
+.detail-item text:first-child {
+  font-weight: 500;
+  color: #333;
+  margin-right: 6px;
+}
+
+/* Modal Styles */
+.modal-input-container {
+  margin-bottom: 18px; /* Increased margin */
+}
+.modal-input-container label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.modal-input-container label .required-star {
+  color: #e74c3c;
+  margin-left: 3px;
+}
+
+.modal-input,
+.modal-textarea {
+  border: 1px solid #dcdfe6;
+  padding: 10px 12px;
+  margin-bottom: 0; /* Removed margin from input itself, handled by container */
+  border-radius: 6px;
+  width: 100%; /* Adjusted to use full width of container */
+  box-sizing: border-box; /* Important for width 100% and padding */
+  font-size: 14px;
+  color: #333;
+}
+
+.modal-input:focus,
+.modal-textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.modal-textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.empty-list-message {
+  text-align: center;
+  color: #7f8c8d; /* Softer gray */
+  margin-top: 40px;
+  font-size: 15px;
+  padding: 20px;
+} 
+
+/* === Custom Modal Styles === */
+/* Ensure these are general enough or adapt if specific styling from user_management or hotel_management is preferred */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1000; /* High z-index to appear on top */
+  /* display: flex; align-items: center; justify-content: center; Optional, if modal-container is not fixed positioned */
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Max width for larger devices */
+  z-index: 1001; /* Above overlay */
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 12px; /* Slightly more rounded */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Important for border-radius on children */
+  height: 100vh; /* Prevent modal from being too tall */
+}
+
+.modal-header {
+  padding: 18px 25px; /* Adjusted padding */
+  border-bottom: 1px solid #e9ecef; /* Lighter border */
+  text-align: center;
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600; /* Semibold */
+  color: #343a40; /* Darker text */
+}
+
+.modal-body {
+  padding: 20px 25px; /* Consistent padding */
+  overflow-y: auto; /* Enable scrolling for taller content */
+  flex-grow: 1; /* Allow body to take available space if content is short */
+  min-height: 0; /* Crucial for scrollable flex children */
+}
+
+/* Existing styles for .modal-input-container, .modal-input, .modal-textarea should work here */
+
+.modal-footer {
+  display: flex;
+  border-top: 1px solid #e9ecef;
+  background-color: #f8f9fa; /* Light background for footer */
+  border-bottom-left-radius: 12px; /* Match content radius */
+  border-bottom-right-radius: 12px; /* Match content radius */
+  flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+.modal-button {
+  flex: 1;
+  padding: 14px 10px; /* Slightly larger buttons */
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-button.cancel {
+  color: #6c757d; /* Bootstrap secondary color */
+  border-right: 1px solid #e9ecef; 
+}
+.modal-button.cancel:active {
+  background-color: #e9ecef;
+}
+
+.modal-button.confirm {
+  color: #007bff; /* Bootstrap primary color */
+  font-weight: 500;
+}
+.modal-button.confirm:active {
+  background-color: #cce5ff; /* Lighter blue for active state */
+}
+
+
+/* Ensure the existing modal input styles are still relevant or adjust if needed */ 
+
+/* Search Bar Styles for Manage Room Types */
+.search-bar-container-mrt {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Space before the room type list */
+  padding: 0 5px; /* Match .page-title-container horizontal padding */
+}
+
+.search-input-mrt {
+  flex-grow: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #d2d6de; /* Slightly darker border */
+  border-radius: 6rpx;
+  margin-right: 15rpx;
+  background-color: #fff;
+}
+
+.clear-search-btn-mrt {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 24rpx;
+  padding: 0 25rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  border-radius: 6rpx;
+  border: none;
+  flex-shrink: 0;
+}
+/* End Search Bar Styles for Manage Room Types */ 

@@ -1,0 +1,68 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/about/about",
+    "pages/profile/profile",
+    "pages/room_list/room_list",
+    "pages/online_booking/online_booking",
+    "pages/fill_order/fill_order",
+    "pages/submit_order/submit_order",
+    "pages/hotel_info/hotel_info",
+    "pages/my_orders/my_orders",
+    "pages/admin/dashboard/dashboard",
+    "pages/admin/management_hub/management_hub",
+    "pages/admin/user_management/user_management",
+    "pages/admin/admin_hub_selection/admin_hub_selection",
+    "pages/admin/hotel_status_selection/hotel_status_selection",
+    "pages/admin/manage_hotel_rooms/manage_hotel_rooms",
+    "pages/admin/hotel_management/hotel_management",
+    "pages/admin/hotel_edit/hotel_edit",
+    "pages/admin/manage_room_types/manage_room_types",
+    "pages/admin/pending_image_cleanup/pending_image_cleanup",
+    "pages/register/register",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "订房小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

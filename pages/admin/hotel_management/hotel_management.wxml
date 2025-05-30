@@ -1,0 +1,43 @@
+<!--pages/admin/hotel_management/hotel_management.wxml-->
+<view class="page-container">
+  <!-- Simple Custom Navigation Bar -->
+  <view class="custom-nav-bar">酒店管理</view>
+
+  <view class="page-title-container">
+    <text class="page-main-title">酒店列表</text>
+    <button class="add-hotel-btn" bindtap="navigateToAddHotelPage">添加酒店</button>
+  </view>
+
+  <!-- Search Bar -->
+  <view class="search-bar-container-hm">
+    <input
+      class="search-input-hm"
+      placeholder="搜索酒店名称或位置"
+      value="{{searchQuery}}"
+      bindinput="handleSearchInput"
+      confirm-type="search"
+      bindconfirm="handleSearchConfirm"
+    />
+    <button class="clear-search-btn-hm" wx:if="{{searchQuery}}" bindtap="clearSearchQuery">清除</button>
+  </view>
+
+  <scroll-view scroll-y class="hotel-list">
+    <block wx:if="{{displayedHotels.length > 0}}">
+      <view wx:for="{{displayedHotels}}" wx:key="filePath" class="hotel-list-item">
+        <view class="hotel-info" bindtap="navigateToHotelEdit" data-hotelid="{{item.filePath}}" data-hotelname="{{item.name}}">
+          <view class="hotel-name">{{item.name}}</view>
+          <view class="hotel-location">{{item.location || '暂无位置信息'}}</view>
+        </view>
+        <view class="hotel-actions">
+          <button class="action-btn manage-rooms-btn" bindtap="navigateToManageRoomTypes" data-hotelid="{{item.filePath}}" data-hotelname="{{item.name}}">房型管理</button>
+          <button class="delete-hotel-btn action-btn" bindtap="confirmDeleteHotel" data-hotelid="{{item.filePath}}" data-hotelname="{{item.name}}" data-filename="{{item.fileName}}">删除</button>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-list-message">{{isLoading ? '加载中...' : (searchQuery ? '未找到匹配的酒店' : '暂无酒店信息，请先添加。')}}</view>
+    </block>
+  </scroll-view>
+
+  <!-- Add Hotel Modal section has been removed -->
+</view> 

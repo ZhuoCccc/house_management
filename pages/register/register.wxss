@@ -1,0 +1,80 @@
+.container {
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /* overflow-y: auto; */ /* Often better handled by page or scroll-view */
+  background-color: #f0f2f5; /* Light background for the whole page */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form-block horizontally */
+  /* justify-content: center; */ /* Uncomment to center vertically if desired */
+}
+
+.title {
+  font-size: 24px; /* Slightly larger title */
+  font-weight: bold;
+  margin-top: 30px; /* More space on top */
+  margin-bottom: 30px; /* More space below title */
+  text-align: center;
+  display: block;
+  color: #333;
+}
+
+/* New form block for better visual grouping */
+.form-block {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 90%; /* Responsive width */
+  max-width: 400px; /* Max width for larger screens */
+  box-sizing: border-box;
+}
+
+.form-item {
+  margin-bottom: 18px; /* Slightly more space between items */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item text {
+  margin-bottom: 8px; /* More space below label */
+  font-size: 14px;
+  color: #333333; /* Darker label text */
+  font-weight: 500; /* Slightly bolder label */
+}
+
+.form-item input {
+  padding: 12px 10px; /* More padding in input */
+  border: 1px solid #dcdfe6; /* Lighter border */
+  border-radius: 4px;
+  font-size: 15px; /* Adjusted font size */
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff; /* Ensure input background is white */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-item input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Subtle focus shadow */
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px; /* More padding in button */
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Slightly more rounded */
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 25px; /* More space above button */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:active {
+  background-color: #0056b3; /* Darker on press */
+} 

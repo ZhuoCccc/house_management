@@ -1,0 +1,298 @@
+/* 基本页面布局 */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f4f8;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-room-btn {
+  font-size: 14px;
+}
+
+/* 房间列表 */
+.room-list-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.room-list { }
+
+.room-item {
+  background-color: #fff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.room-info text {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #555;
+}
+
+.room-info .room-number {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.room-info .room-price {
+  color: #e53935; /* 价格用醒目颜色 */
+  font-weight: 500;
+}
+
+.room-info .status-text {
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.status-text.kongxian { background-color: #4CAF50; }
+.status-text.ruzhu { background-color: #FF9800; }
+.status-text.dasao { background-color: #2196F3; }
+.status-text.weixiu { background-color: #757575; }
+
+.room-actions .delete-room-btn {
+  margin-left: 10px;
+}
+
+.empty-list {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* 模态框通用样式 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 85%;
+  max-width: 400px;
+  z-index: 1001;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.modal-body { 
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-picker .picker-text {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.form-picker .picker-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-arrow {
+  color: #888;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.modal-button {
+  margin-left: 10px;
+  font-size: 14px;
+  padding: 8px 15px;
+}
+
+.modal-button.cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.modal-button.confirm {
+  background-color: #007bff; /* 主题色 */
+  color: #fff;
+}
+
+.page-container.management-hub-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f7f9; /* 更柔和的背景色 */
+  box-sizing: border-box;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 15px; /* 增加上下padding */
+  background-color: #ffffff;
+  /* border-bottom: 1px solid #e0e0e0; */ /* 可以去掉底部边框，让阴影更突出 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 细微阴影 */
+}
+
+.page-title {
+  font-size: 17px; /* 略微减小，如果自定义导航栏较窄 */
+  font-weight: 600; /* 加粗一些 */
+  color: #34495e; /* 深蓝灰色 */
+}
+
+.hub-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  text-align: center;
+}
+
+.hub-welcome {
+  font-size: 18px; /* 欢迎语稍大一些 */
+  color: #34495e;
+  margin-bottom: 40px; /* 增大与按钮组的间距 */
+  line-height: 1.6;
+}
+
+.action-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 320px; /* 按钮容器宽度调整 */
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%; /* 按钮宽度占满容器 */
+  padding: 16px 20px; /* 调整按钮内边距，使其更饱满 */
+  margin-bottom: 20px;
+  border-radius: 10px; /* 更圆润的边角 */
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08); /* 按钮阴影 */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none; /* 移除默认边框，如果button标签有的话 */
+  text-align: center;
+}
+
+.action-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+/* 移除空的 .button-icon 的影响，因为它在WXML中被注释了，所以这里不需要特别处理 */
+/* .action-button .button-icon { ... } */
+
+.action-button.rooms-btn {
+  background-image: linear-gradient(to right, #007bff, #0056b3); /* 渐变蓝 */
+  color: white;
+}
+
+.action-button.users-btn {
+  background-image: linear-gradient(to right, #28a745, #1e7e34); /* 渐变绿 */
+  color: white;
+}
+
+.hub-footer {
+  padding: 20px;
+  padding-bottom: 30px; /* 适配iPhone底部安全区域 */
+  display: flex;
+  justify-content: center;
+}
+
+.logout-button-hub {
+  width: 80%;
+  max-width: 320px;
+  background-color: #ffffff;
+  color: #6c757d; /* 文字颜色 */
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 12px 0;
+  border: 1px solid #ced4da; /* 添加边框 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logout-button-hub:active {
+  background-color: #f8f9fa;
+  border-color: #adb5bd;
+} 

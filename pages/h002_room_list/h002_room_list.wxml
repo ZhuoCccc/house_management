@@ -1,0 +1,56 @@
+<scroll-view scroll-y="true" class="container-scrollable" style="height: 100vh;">
+  <text class="page-title">选择房间</text>
+  <view class="info-bar" wx:if="{{checkInDate && checkOutDate}}">
+    <text>入住: {{checkInDate}}</text>
+    <text>离店: {{checkOutDate}}</text>
+    <text>共 {{nights}} 晚</text>
+  </view>
+
+  <view class="room-list-content-wrapper">
+    <block wx:if="{{filteredRooms.length > 0}}">
+      <view wx:for="{{filteredRooms}}" wx:key="id" class="room-item-card {{item.status === '空闲' ? 'available' : 'unavailable'}}">
+        <!-- Left Column: Image Placeholder -->
+        <view class="room-image-container">
+          <view class="room-image-placeholder">
+            <text class="room-status-badge {{item.statusClass}}">{{item.status}}</text>
+          </view>
+        </view>
+
+        <!-- Right Column: Room Details & Actions -->
+        <view class="room-info-column">
+          <view class="room-main-details">
+            <text class="room-type-title">{{item.type}}</text>
+            <text class="room-number-info">房间号: {{item.roomNumber}} | 楼层: {{item.floor}}</text>
+            <!-- Placeholder for ratings/distance - to be added if data exists -->
+            <!-- <view class="room-ratings-distance">
+              <text class="rating">★★★★☆ 4.7</text>
+              <text class="distance">距您700米</text>
+            </view> -->
+            <view class="room-amenities" wx:if="{{item.amenities && item.amenities.length > 0}}">
+              <text wx:for="{{item.amenities}}" wx:key="*this" class="amenity-tag">{{item}}</text>
+            </view>
+          </view>
+
+          <view class="room-price-actions">
+            <view class="price-container">
+              <text class="price-label">每晚</text>
+              <text class="room-price"><text class="currency-symbol">￥</text>{{item.price}}<text class="price-suffix">起</text></text>
+            </view>
+            <view class="actions-container">
+              <button 
+                wx:if="{{item.status === '空闲'}}" 
+                class="book-button"
+                bindtap="onRoomSelect" 
+                data-id="{{item.id}}"
+              >预订</button> <!-- Shorter text -->
+              <text wx:else class="status-unavailable-text">暂不可订</text> <!-- Shorter text -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-list-message">暂无可预订的房间或当前筛选条件下无房间。</view>
+    </block>
+  </view>
+</scroll-view> 

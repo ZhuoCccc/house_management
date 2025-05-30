@@ -1,0 +1,69 @@
+<view class="page-container">
+  <!-- 自定义导航栏占位 -->
+  <view style="height: {{navBarHeight}}px;"></view>
+  
+  <view class="page-header">
+    <text class="page-title">房间管理中心</text>
+    <button class="add-room-btn" type="primary" bindtap="openAddRoomModal">＋ 添加新房间</button>
+  </view>
+
+  <scroll-view scroll-y class="room-list-container">
+    <view class="room-list" wx:if="{{rooms.length > 0}}">
+      <view class="room-item" wx:for="{{rooms}}" wx:key="id">
+        <view class="room-info">
+          <text class="room-number">房间号: {{item.roomNumber}} ({{item.floor}})</text>
+          <text class="room-type">类型: {{item.type}}</text>
+          <text class="room-price">价格: ¥{{item.price}}</text>
+          <text class="room-status">状态: <text class="status-text {{item.status}}">{{item.status}}</text></text>
+          <text class="room-amenities" wx:if="{{item.amenities && item.amenities.length > 0}}">设施: {{item.amenities.join('，')}}</text>
+        </view>
+        <view class="room-actions">
+          <button class="delete-room-btn" type="warn" size="mini" bindtap="deleteRoom" data-roomid="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </view>
+    <view class="empty-list" wx:else>
+      <text>暂无房间信息，请点击上方按钮添加。</text>
+    </view>
+  </scroll-view>
+
+  <!-- 添加房间模态框 -->
+  <view class="modal-overlay" wx:if="{{showAddRoomModal}}" bindtap="closeAddRoomModal"></view>
+  <view class="modal-content add-room-modal" wx:if="{{showAddRoomModal}}">
+    <view class="modal-header">
+      <text class="modal-title">添加新房间</text>
+    </view>
+    <view class="modal-body">
+      <view class="form-group">
+        <text class="form-label">房间号:</text>
+        <input class="form-input" value="{{newRoom.roomNumber}}" bindinput="handleAddRoomInputChange" data-field="roomNumber" placeholder="例如: 101, A203" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">房型:</text>
+        <input class="form-input" value="{{newRoom.type}}" bindinput="handleAddRoomInputChange" data-field="type" placeholder="例如: 标准单人间, 豪华套房" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">楼层:</text>
+        <input class="form-input" value="{{newRoom.floor}}" bindinput="handleAddRoomInputChange" data-field="floor" placeholder="例如: 1F, 二楼" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">价格 (元/晚):</text>
+        <input class="form-input" type="digit" value="{{newRoom.price}}" bindinput="handleAddRoomInputChange" data-field="price" placeholder="例如: 199" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">状态:</text>
+        <picker class="form-picker" bindchange="handleStatusChange" value="{{newRoom.status}}" range="{{statusOptions}}">
+          <view class="picker-text">{{newRoom.status}} <text class="dropdown-arrow">▼</text></view>
+        </picker>
+      </view>
+      <view class="form-group">
+        <text class="form-label">设施 (中文逗号分隔):</text>
+        <input class="form-input" value="{{newRoom.amenities}}" bindinput="handleAddRoomInputChange" data-field="amenities" placeholder="例如: 空调，电视，WiFi" />
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-button cancel" bindtap="closeAddRoomModal">取消</button>
+      <button class="modal-button confirm" bindtap="saveNewRoom">确认添加</button>
+    </view>
+  </view>
+</view> 

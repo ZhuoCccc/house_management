@@ -1,0 +1,73 @@
+<!-- Custom Navigation Bar -->
+<view class="custom-nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+  <view class="nav-bar-content" style="height: {{navBarHeight - statusBarHeight}}px; line-height: {{navBarHeight - statusBarHeight}}px;">
+    <!-- <image class="nav-back-arrow" src="/static/images/back-arrow-white.png" bindtap="navigateBack"></image> -->
+    <text class="nav-back-arrow-text" bindtap="navigateBack">&lt;</text> <!-- Using HTML entity for < -->
+    <view class="nav-title">{{navBarTitle}}</view>
+  </view>
+</view>
+
+<!-- Scrollable Page Content -->
+<scroll-view 
+  scroll-y="true" 
+  class="page-scrollable-content" 
+  style="padding-top: {{navBarHeight + statusBarHeight}}px; height: calc(100vh - {{navBarHeight + statusBarHeight}}px - {{bottomBarHeight}}px);"
+>
+  <view class="container"> <!-- This container now handles inner padding and content layout -->
+    <!-- 订单概要 -->
+    <view class="section order-summary-section">
+      <view class="room-name">{{roomName}}</view>
+      <view class="dates-nights">
+        <text>{{checkInDate}}</text>
+        <text class="date-separator">—</text>
+        <text>{{checkOutDate}}</text>
+        <text class="total-nights">共{{nights}}晚</text>
+      </view>
+    </view>
+
+    <!-- 入住信息 -->
+    <view class="section checkin-info-section">
+      <view class="section-title">入住信息</view>
+      <view class="form-item">
+        <text class="label">房间数量</text>
+        <view class="stepper">
+          <button class="stepper-btn minus {{roomQuantity <= 1 ? 'disabled' : ''}}" bindtap="decreaseQuantity" disabled="{{roomQuantity <= 1}}">-</button>
+          <input class="quantity-input" type="number" value="{{roomQuantity}}" disabled/>
+          <button class="stepper-btn plus" bindtap="increaseQuantity">+</button>
+        </view>
+      </view>
+      <view class="form-item">
+        <text class="label">入住人</text>
+        <input class="input-field" placeholder="请输入入住人姓名" value="{{guestName}}" bindinput="bindGuestNameInput"/>
+      </view>
+      <view class="form-item">
+        <text class="label">联系电话</text>
+        <input class="input-field" type="number" placeholder="请输入联系电话" value="{{contactPhone}}" bindinput="bindContactPhoneInput" maxlength="11"/>
+      </view>
+      <view class="form-item remarks-item">
+        <text class="label">备注</text>
+        <textarea class="textarea-field" placeholder="选填，请输入备注信息" value="{{remarks}}" bindinput="bindRemarksInput"/>
+      </view>
+    </view>
+
+    <!-- 取消规则 -->
+    <view class="section cancellation-policy-section">
+      <view class="section-title">取消规则</view>
+      <text class="policy-text">订单确认后30分钟内可免费取消修改，若未入住或过时取消修改担保费用将不予退还。携程会根据您的担保方式，预授权或暂扣RMB {{estimatedGuaranteeFee}}用于担保。订单需等待酒店或供应商确认后生效，订单确认结果以携程短信、邮件或app通知为准。</text>
+    </view>
+  </view> <!-- End of .container -->
+</scroll-view> <!-- End of .page-scrollable-content -->
+
+<!-- 底部操作栏 (remains fixed at the bottom of viewport) -->
+<view class="bottom-bar">
+  <view class="price-section">
+    <text class="price-symbol">¥</text>
+    <text class="price-value">{{totalPrice}}</text>
+  </view>
+  <view class="details-link" bindtap="showPriceDetails">
+    <text>明细</text>
+    <!-- <image class="arrow-icon" src="/static/images/arrow-down.png"/> -->
+    <text class="arrow-icon-text">▽</text> <!-- Using text as fallback -->
+  </view>
+  <button class="submit-button" bindtap="submitOrder">提交订单</button>
+</view> 

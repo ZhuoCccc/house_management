@@ -1,0 +1,73 @@
+<view class="container">
+  <view class="header">
+    <text class="title">实时房间动态</text>
+    <text class="welcome-message">欢迎您，{{adminUsername}}！</text>
+  </view>
+
+  <view class="filter-controls">
+    <picker bindchange="onFilterChange" value="{{filterStatus}}" range="{{statusOptions}}">
+      <view class="picker-label">
+        筛选状态: <text class="current-filter">{{filterStatus}}</text> <text class="dropdown-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <scroll-view scroll-y class="room-status-list-container">
+    <view class="room-status-list">
+      <block wx:if="{{rooms.length > 0}}">
+        <view wx:for="{{rooms}}" wx:key="id" class="room-card {{item.status}}">
+          <view class="room-card-header">
+            <text class="room-number">{{item.roomNumber}}</text>
+            <text class="room-floor">{{item.floor}}</text>
+          </view>
+          <view class="room-card-body">
+            <text class="room-type">房型: {{item.type}}</text>
+            <text class="room-status">状态: <text class="status-text {{item.status}}">{{item.status}}</text></text>
+          </view>
+          <view class="room-card-actions">
+            <button size="mini" class="edit-room-button" bindtap="openEditModal" data-roomid="{{item.id}}">修改</button>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="empty-message">没有找到符合条件的房间。</view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- Edit Room Modal -->
+  <view class="modal-overlay" wx:if="{{showEditModal}}" bindtap="closeEditModal"></view>
+  <view class="modal-content" wx:if="{{showEditModal}}">
+    <view class="modal-header">
+      <text class="modal-title">修改房间信息 ({{editingRoom.roomNumber}})</text>
+    </view>
+    <view class="modal-body">
+      <view class="form-group">
+        <text class="form-label">房间号:</text>
+        <input class="form-input" value="{{editedRoomNumber}}" bindinput="handleModalInputChange" data-field="editedRoomNumber" placeholder="请输入房间号" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">房型:</text>
+        <input class="form-input" value="{{editedRoomType}}" bindinput="handleModalInputChange" data-field="editedRoomType" placeholder="请输入房型" />
+      </view>
+      <view class="form-group">
+        <text class="form-label">状态:</text>
+        <picker class="form-picker" bindchange="handleModalStatusChange" value="{{editedRoomStatus}}" range="{{statusOptionsForEdit}}">
+          <view class="picker-text">{{editedRoomStatus}} <text class="dropdown-arrow">▼</text></view>
+        </picker>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-button cancel" bindtap="closeEditModal">取消</button>
+      <button class="modal-button confirm" bindtap="saveRoomChanges">保存</button>
+    </view>
+  </view>
+
+  <view class="admin-nav-button-container">
+    <button class="management-hub-button" bindtap="navigateToManagementHub">进入管理中心</button>
+  </view>
+
+  <view class="admin-actions">
+    <button type="warn" class="logout-button" bindtap="logoutAdmin">退出登录</button>
+  </view>
+</view> 

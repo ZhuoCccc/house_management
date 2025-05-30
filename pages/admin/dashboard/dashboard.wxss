@@ -1,0 +1,309 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  /* overflow-y: auto; Keep commented out */
+}
+
+.header, .filter-controls {
+  flex-shrink: 0; /* Prevent header and filter from shrinking */
+}
+
+.header {
+  width: 100%;
+  padding: 18px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  text-align: center;
+  margin-bottom: 20px;
+  flex-shrink: 0; /* Keep this as it was from general styling, not the problematic revert part */
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2329;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.welcome-message {
+  font-size: 13px;
+  color: #586069;
+}
+
+.filter-controls {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  flex-shrink: 0; /* Keep this as it was from general styling, not the problematic revert part */
+}
+
+.picker-label {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-filter {
+  font-weight: 500;
+  color: #007aff;
+  margin: 0 6px;
+}
+
+.dropdown-arrow {
+  font-size: 12px;
+  color: #888;
+}
+
+.room-status-list-container {
+  width: 100%;
+  flex: 1;
+  min-height: 500px;
+  /* overflow-y: auto; Removed as scroll-view tag handles its own scrolling via scroll-y attribute */
+  /* border: 1px dashed orange; */ /* You can use this for debugging later if needed */
+}
+
+.room-status-list {
+  /* padding: 0 2px; */
+}
+
+.room-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  border-left: 4px solid #ccc;
+}
+
+.room-card.kongxian {
+  border-left-color: #28a745;
+}
+.room-card.ruzhu {
+  border-left-color: #dc3545;
+}
+.room-card.dasao {
+  border-left-color: #ffc107;
+}
+.room-card.weixiu {
+  border-left-color: #6c757d;
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.room-number {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.room-floor {
+  font-size: 12px;
+  color: #586069;
+  background-color: #e9ecef;
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.room-card-body {
+  font-size: 13px;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.room-type {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.room-status {
+  display: block;
+}
+
+.status-text {
+  font-weight: 500;
+}
+.status-text.kongxian { color: #28a745; }
+.status-text.ruzhu { color: #dc3545; }
+.status-text.dasao { color: #ffc107; }
+.status-text.weixiu { color: #6c757d; }
+
+.empty-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.admin-nav-button-container, .admin-actions {
+  flex-shrink: 0; /* Prevent bottom button sections from shrinking */
+}
+
+.admin-nav-button-container {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 15px;
+  /* flex-shrink: 0; */ /* Removing revert */
+}
+
+.management-hub-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.admin-actions {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 15px;
+  box-sizing: border-box;
+  /* flex-shrink: 0; */ /* Removing revert */
+}
+
+.logout-button {
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.room-card-actions {
+  margin-top: 12px;
+  text-align: right;
+}
+
+.edit-room-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88%;
+  max-width: 380px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  z-index: 1001;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-header {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dee2e6;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: #495057;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-input,
+.form-picker .picker-text {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #495057;
+}
+.form-input::placeholder {
+  color: #adb5bd;
+}
+
+.form-picker .picker-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal-button.confirm {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-button.cancel {
+  background-color: #f8f9fa;
+  color: #343a40;
+  border: 1px solid #ced4da;
+} 

@@ -1,0 +1,54 @@
+<!-- Custom Navigation Bar -->
+<view class="custom-nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+  <view class="nav-bar-content" style="height: {{navBarHeight - statusBarHeight}}px; line-height: {{navBarHeight - statusBarHeight}}px;">
+    <!-- No back arrow for tab pages generally, but can add if this page is pushed via navigateTo -->
+    <!-- <image class="nav-back-arrow" src="/static/images/back-arrow-white.png" bindtap="navigateBack"></image> -->
+    <view class="nav-title">{{navBarTitle}}</view>
+  </view>
+</view>
+
+<!-- Page Content Wrapper -->
+<view class="page-content-wrapper" style="padding-top: {{navBarHeight + statusBarHeight}}px;">
+  <view class="container about-container">
+    <view class="section about-header">
+      <view class="hotel-logo-placeholder"></view> <!-- Placeholder for a logo -->
+      <text class="hotel-name">{{hotelName}}</text>
+    </view>
+
+    <view class="section info-section">
+      <navigator class="info-item" url="{{hotelIntroLink}}">
+        <view class="info-item-main-content">
+          <text class="info-icon">📄</text>
+          <text class="info-label">酒店介绍</text>
+        </view>
+        <text class="info-arrow">&gt;</text>
+      </navigator>
+      <view class="info-item" bindtap="callHotel">
+        <view class="info-item-main-content">
+          <text class="info-icon">📞</text>
+          <text class="info-label">联系酒店</text>
+        </view>
+        <text class="info-value">{{contactNumber}}</text>
+      </view>
+      <view class="info-item">
+        <view class="info-item-main-content">
+          <text class="info-icon">✉️</text>
+          <text class="info-label">电子邮箱</text>
+        </view>
+        <text class="info-value">{{contactEmail}}</text>
+      </view>
+      <view class="info-item no-border">
+        <view class="info-item-main-content">
+          <text class="info-icon">📍</text>
+          <text class="info-label">酒店地址</text>
+        </view>
+        <text class="info-value address-value">{{address}}</text>
+      </view>
+    </view>
+
+    <view class="section app-info-section">
+        <text class="app-version">当前版本: 1.0.0</text>
+    </view>
+
+  </view>
+</view> 

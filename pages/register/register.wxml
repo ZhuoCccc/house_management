@@ -1,0 +1,24 @@
+<view class="container">
+  <text class="title">用户注册</text>
+
+  <view class="form-block">
+    <view class="form-item">
+      <text>用户名:</text>
+      <input type="text" placeholder="请输入用户名" value="{{newUsername}}" bindinput="bindNewUsernameInput" />
+    </view>
+    <view class="form-item">
+      <text>密码:</text>
+      <input type="password" placeholder="请输入密码" value="{{newPassword}}" bindinput="bindNewPasswordInput" />
+    </view>
+    <view class="form-item">
+      <text>确认密码:</text>
+      <input type="password" placeholder="请再次输入密码" value="{{confirmPassword}}" bindinput="bindConfirmPasswordInput" />
+    </view>
+    <view class="form-item">
+      <text>邮箱:</text>
+      <input type="text" placeholder="请输入邮箱地址" value="{{email}}" bindinput="bindEmailInput" />
+    </view>
+    <button bindtap="registerUser">注册</button>
+  </view>
+
+</view> 

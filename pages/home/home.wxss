@@ -1,0 +1,444 @@
+/* pages/home/home.wxss */
+page {
+  background-color: #f4f4f4; /* Light grey background for the entire page */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", Arial, Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main scroll container */
+.main-scroll-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* 1. Hero Section */
+.hero-section {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+}
+
+.hero-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-brand-name {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* 2. Main Content Area */
+.main-content-area {
+  background-color: #f7f8fa;
+  border-radius: 20px 20px 0 0;
+  padding: 20px 20px 0 20px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 50vh + 60px + 100px);
+}
+
+.main-content-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* Styles for .container-scrollable - if you intend to use this with <scroll-view> later, 
+   ensure its height is constrained by its parent, or it has a specific height itself. 
+   For now, this rule might not be used if .main-content-area is the primary scroller. */
+.container-scrollable {
+  width: 100%;
+  /* height: 100vh; */ /* If this is inside .main-content-area, height: 100vh will make it too tall. 
+                      It should be height: 100%; or auto if .main-content-area handles scrolling. */
+  height: 100%; /* Assuming it's a direct child of a container that has a defined height for scrolling */
+  box-sizing: border-box;
+  background-color: #f7f8fa; 
+}
+
+/* Selection Card - Enhanced for better visual hierarchy */
+.selection-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.store-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1rpx solid #eeeeee;
+}
+
+.store-selector-label {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  color: #888888;
+}
+
+.date-picker-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.check-in-section {
+  align-items: flex-start;
+}
+
+.check-out-section {
+  align-items: flex-end;
+}
+
+.date-label {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 4px;
+}
+
+.date-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.day-of-week {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.nights-display-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; /* Give it some horizontal space */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.nights-value {
+  font-size: 14px;
+  color: #555555;
+}
+
+.date-arrow-indicator {
+  font-size: 18px;
+  color: #cccccc;
+  margin-left: 10px; /* Space from the checkout date */
+  display: flex;
+  align-items: center;
+}
+
+/* 2b. Filter Tags Section */
+.filter-tags-section {
+  margin-bottom: 20px; /* Space before the hotel list */
+}
+
+.tags-scroll-view {
+  white-space: nowrap; /* Enable horizontal scrolling for tags */
+}
+
+.filter-tag {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #555555;
+  padding: 7px 15px;
+  border-radius: 18px; /* Fully rounded tags */
+  margin-right: 10px;
+  font-size: 13px;
+  border: 1rpx solid #dddddd; /* Light border */
+}
+
+.filter-tag.active {
+  background-color: #007aff; /* Example active color - adjust to your theme */
+  color: #ffffff;
+  border-color: #007aff;
+}
+
+/* 2c. Hotel List Section */
+.hotel-list-heading {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15px;
+  padding-left: 5px; /* Slight indent */
+}
+
+.hotel-list-items-container {
+  /* Container for hotel cards, no specific styles needed unless for layout like grid */
+}
+
+.hotel-card-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 18px;
+  overflow: hidden; /* Ensure child elements like images with object-fit don't break rounded corners */
+  display: flex; /* For side-by-side image and info in future, or stacked as is */
+  flex-direction: column; /* Default stacked layout: image on top, info below */
+}
+
+.hotel-image-wrapper {
+  width: 100%;
+  height: 180px; /* Fixed height for hotel images */
+  position: relative;
+}
+
+.hotel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-card-top-tag {
+  position: absolute;
+  top: 12px;
+  left: 0; /* Attached to the left edge */
+  background-color: #ff9500; /* Orange color like "月租" */
+  color: white;
+  padding: 4px 10px 4px 8px; /* More padding on right for shape */
+  font-size: 12px;
+  font-weight: 500;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.hotel-card-location-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px; /* Pill shape */
+  font-size: 11px;
+}
+
+/* New Style for City Tag */
+.hotel-card-city-tag {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  left: 10px;  /* Adjust as needed */
+  background-color: rgba(0, 122, 255, 0.7); /* Example: A blueish tint */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  z-index: 1; /* Ensure it's above the image if stacking context issues */
+}
+
+.hotel-info-details {
+  padding: 15px;
+}
+
+.hotel-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Show only one line */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hotel-subtitle {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show up to two lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.hotel-price-line {
+  display: flex;
+  align-items: baseline; /* Align currency, value, suffix */
+  margin-top: 8px;
+}
+
+.hotel-price-currency {
+  font-size: 14px;
+  color: #ff3b30; /* Reddish price color */
+  font-weight: bold;
+  margin-right: 1px;
+}
+
+.hotel-price-value {
+  font-size: 20px;
+  color: #ff3b30; /* Reddish price color */
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.hotel-price-suffix {
+  font-size: 12px;
+  color: #888888;
+  margin-right: 8px;
+}
+
+.hotel-member-discount {
+  font-size: 11px;
+  color: #ff9500; /* Orange color */
+  border: 1rpx solid #ff9500;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.empty-hotel-list-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999999;
+  font-size: 14px;
+}
+
+/* Province/City Picker Popup Styles */
+.picker-popup-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Darker, more noticeable mask */
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Ensure visibility transition happens after opacity */
+}
+
+.picker-popup-mask.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.province-city-picker-container {
+  position: fixed;
+  bottom: -100%; /* Start off-screen */
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom); /* For iPhone X and newer */
+  transition: bottom 0.3s ease-out;
+  box-sizing: border-box;
+}
+
+.province-city-picker-container.active {
+  bottom: 0; /* Slide in from bottom */
+}
+
+.picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1rpx solid #e9e9e9;
+}
+
+.picker-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+}
+
+.picker-btn {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.picker-btn.cancel-btn {
+  color: #888;
+}
+
+.picker-btn.confirm-btn {
+  color: #007aff; /* Or your app's primary color */
+  font-weight: 500;
+}
+
+/* Style for items within picker-view-column for better readability */
+.picker-view-column view { /* Targets the <view> inside <picker-view-column> */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px; /* Add some horizontal padding to prevent text touching edges */
+  box-sizing: border-box;
+}
+
+/* Search Bar Styles */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff; /* Or a light grey like #f0f0f0 */
+  margin: 0 20rpx 20rpx 20rpx; /* Match selection-card horizontal margin and add bottom margin */
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.search-input {
+  flex-grow: 1;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+}
+
+.clear-search-btn {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 24rpx;
+  padding: 0 25rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+/* End Search Bar Styles */ 

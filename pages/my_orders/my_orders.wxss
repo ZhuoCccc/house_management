@@ -1,0 +1,140 @@
+.container { padding: 20px; }
+.title { font-size: 20px; font-weight: bold; margin-bottom: 10px; display: block; text-align: center; } 
+
+/* Custom Navigation Bar Styles (if used) */
+.custom-nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background-color: #fff; /* White nav bar */
+  box-sizing: border-box;
+  border-bottom: 1px solid #f0f0f0; /* Light border */
+}
+.nav-bar-content { position: relative; display: flex; align-items: center; justify-content: center; padding: 0 15px; box-sizing: border-box; }
+.nav-back-arrow { /* Needs a dark arrow image if used */
+  position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; padding: 5px;
+}
+.nav-title { font-size: 17px; color: #333; /* Dark title */ font-weight: 500; }
+
+.page-content-wrapper {
+  background-color: #f8f8f8; /* Light grey page background */
+  min-height: 100vh;
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 1px; /* Consistent with profile page */
+  overflow-y: auto; /* Ensure vertical scrolling */
+}
+
+.my-orders-container {
+  padding: 0 0 10px 0; /* Remove side padding, let cards handle it */
+  /* padding-top is handled by tabs or nav bar height */
+}
+
+/* Tabs Styling */
+.tabs {
+  display: flex;
+  background-color: #fff; /* White tab background */
+  color: #555; /* Default tab text color */
+  position: sticky; 
+  top: 0; /* Assuming navBarHeight is handled by JS if custom nav is present */
+  z-index: 900;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  margin-bottom: 10px; /* Add space below tabs */
+}
+
+.tab-item {
+  flex: 1;
+  padding: 13px 5px; /* Slightly increased padding */
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.tab-item.active {
+  color: #D2B48C; /* Highlight color (Tan) */
+  border-bottom-color: #D2B48C; 
+  font-weight: bold;
+}
+
+/* Order List */
+.order-list {
+  /* margin-top is now handled by tabs margin-bottom */
+  padding: 0 15px; /* Increased side padding for the list itself */
+}
+
+.order-card {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 12px; /* Adjusted margin */
+  padding: 18px; /* Increased internal padding */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06); /* Consistent shadow */
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px; /* Adjusted padding */
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 12px; /* Adjusted margin */
+}
+
+.room-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.order-status {
+  font-size: 13px;
+  color: #D2B48C; 
+  font-weight: bold;
+  padding: 3px 6px; /* Add some padding to status */
+  border-radius: 4px;
+  background-color: #fdf6e9; /* Light tan background for status */
+}
+
+.order-body .order-detail-item {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.order-detail-item.order-time {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px; /* Adjusted margin */
+  padding-top: 12px; /* Adjusted padding */
+  border-top: 1px solid #f0f0f0;
+}
+
+.total-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ff4d4f;
+}
+
+.order-footer button {
+  margin-left: 10px;
+  background-color: #D2B48C;
+  border-color: #D2B48C;
+  color: white;
+  font-size: 13px;
+  padding: 6px 12px; /* Slightly increased padding */
+  border-radius: 4px; /* Add border-radius to button */
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 60px 20px; /* Increased padding */
+  color: #888;
+  font-size: 15px;
+} 

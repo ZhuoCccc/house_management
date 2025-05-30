@@ -1,0 +1,50 @@
+<!-- Optional Custom Navigation Bar (if you want one here too, copy from other pages) -->
+<view class="custom-nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;" wx:if="{{!isTabPage}}">
+  <view class="nav-bar-content" style="height: {{navBarHeight - statusBarHeight}}px; line-height: {{navBarHeight - statusBarHeight}}px;">
+    <image class="nav-back-arrow" src="/static/images/back-arrow-white.png" bindtap="navigateBack"></image>
+    <view class="nav-title">{{navBarTitle}}</view>
+  </view>
+</view>
+
+<!-- Main Content -->
+<view class="page-content-wrapper" style="padding-top: {{!isTabPage ? (navBarHeight + statusBarHeight) : 0}}px;">
+  <view class="container my-orders-container">
+    <!-- Tabs -->
+    <view class="tabs">
+      <block wx:for="{{tabs}}" wx:key="key">
+        <view class="tab-item {{activeTab === item.key ? 'active' : ''}}" bindtap="switchTab" data-key="{{item.key}}">
+          {{item.title}}
+        </view>
+      </block>
+    </view>
+
+    <!-- Order List -->
+    <view class="order-list" wx:if="{{orders.length > 0}}">
+      <block wx:for="{{orders}}" wx:key="id">
+        <!-- Filter orders based on activeTab and item.status -->
+        <view class="order-card" wx:if="{{activeTab === 'all' || activeTab === item.status.toLowerCase().replace(' ', '') }}">
+          <view class="order-header">
+            <text class="room-name">{{item.roomName}}</text>
+            <text class="order-status">{{item.status}}</text>
+          </view>
+          <view class="order-body">
+            <view class="order-detail-item">入住：{{item.checkInDate}}</view>
+            <view class="order-detail-item">离店：{{item.checkOutDate}} (共{{item.nights}}晚)</view>
+            <view class="order-detail-item">数量：{{item.roomQuantity}}间</view>
+            <view class="order-detail-item">客人：{{item.guestName}}</view>
+            <view class="order-detail-item">电话：{{item.contactPhone}}</view>
+            <view class="order-detail-item order-time">下单：{{item.displayOrderTime || item.orderTime}}</view>
+          </view>
+          <view class="order-footer">
+            <text class="total-price">总价：¥{{item.totalPrice}}</text>
+            <!-- Add buttons for actions like 'Pay Now', 'Cancel Order', 'View Details' based on status -->
+            <button wx:if="{{item.status === '待支付'}}" size="mini" type="warn">立即支付</button>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="empty-orders" wx:else>
+      <text>暂无相关订单</text>
+    </view>
+  </view>
+</view> 

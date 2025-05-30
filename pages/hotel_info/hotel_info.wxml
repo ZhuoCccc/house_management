@@ -1,0 +1,4 @@
+<view class="container">
+  <text class="title">酒店介绍</text>
+  <text>这里是酒店的详细介绍...</text>
+</view> 

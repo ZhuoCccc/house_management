@@ -1,0 +1,5 @@
+<view class="container">
+  <text class="title">管理员控制台</text>
+  <text>欢迎，管理员！</text>
+  <!-- Add admin-specific controls and data here -->
+</view> 

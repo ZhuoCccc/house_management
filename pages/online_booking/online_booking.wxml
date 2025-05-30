@@ -1,0 +1,6 @@
+<view class="container">
+  <text class="title">在线预订</text>
+  <text wx:if="{{roomId}}">正在为房型ID: {{roomId}} 进行预订</text>
+  <!-- Booking form fields will go here -->
+  <button bindtap="navigateToFillOrder">填写订单信息</button>
+</view> 

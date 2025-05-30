@@ -1,0 +1,270 @@
+/* pages/admin/hotel_management/hotel_management.wxss */
+.page-container {
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Simple custom nav bar placeholder */
+.custom-nav-bar {
+  padding: 10px 15px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+  position: relative; /* For potential back button */
+}
+
+.page-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-main-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.add-hotel-btn {
+  background-color: #07c160;
+  color: white;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.hotel-list {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hotel-list-item {
+  background-color: #fff;
+  padding: 18px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hotel-info {
+  flex-grow: 1;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.hotel-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.hotel-location {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+}
+
+.hotel-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.hotel-actions button {
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  min-width: 80px;
+  text-align: center;
+  border: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hotel-actions .manage-rooms-btn {
+  background-color: #3498db;
+  color: white;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.hotel-actions .manage-rooms-btn:active {
+  background-color: #2980b9;
+}
+
+.hotel-actions .delete-hotel-btn {
+  background-color: #e74c3c;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.hotel-actions .delete-hotel-btn:active {
+  background-color: #c0392b;
+}
+
+.empty-list-message {
+  text-align: center;
+  color: #888;
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+/* Custom Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  width: 85%;
+  max-width: 400px; /* Max width for larger screens */
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensures children honor border-radius */
+}
+
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.form-label .required-star {
+  color: #e74c3c;
+  margin-left: 3px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.form-input:focus {
+  border-color: #07c160;
+  box-shadow: 0 0 0 2px rgba(7, 193, 96, 0.2);
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 12px 10px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal-button.cancel {
+  color: #666;
+  border-right: 1px solid #eee; /* Separator line */
+}
+
+.modal-button.confirm {
+  color: #07c160; /* Theme color */
+  font-weight: bold;
+}
+
+.modal-button:active {
+  background-color: #f2f2f2;
+}
+
+/* Search Bar Styles for Hotel Management */
+.search-bar-container-hm {
+  display: flex;
+  align-items: center;
+  padding: 0 0 15px 0; /* Padding at the bottom */
+  margin-bottom: 10px; /* Space before the hotel list items */
+  /* background-color: #fff; Optional: if you want a distinct background */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.06); */
+}
+
+.search-input-hm {
+  flex-grow: 1;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 6rpx;
+  margin-right: 15rpx;
+  background-color: #fff; /* White background for input */
+}
+
+.clear-search-btn-hm {
+  background-color: #e74c3c;
+  color: white;
+  font-size: 24rpx;
+  padding: 0 25rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  border-radius: 6rpx;
+  border: none;
+  flex-shrink: 0;
+}
+/* End Search Bar Styles for Hotel Management */ 

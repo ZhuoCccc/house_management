@@ -1,0 +1,31 @@
+<!--pages/admin/pending_image_cleanup/pending_image_cleanup.wxml-->
+<view class="page-container">
+  <view class="custom-nav-bar" style="padding-top: {{statusBarHeight}}px;">
+    <view class="back-icon-wrapper" bindtap="navigateBack">
+      <view class="back-icon"></view>
+    </view>
+    <view class="nav-title">待清理图片日志</view>
+  </view>
+
+  <scroll-view scroll-y class="log-list-container">
+    <block wx:if="{{failedDeletions.length > 0}}">
+      <view wx:for="{{failedDeletions}}" wx:key="fileID" class="log-item">
+        <view class="log-details">
+          <view class="log-field"><text class="label">File ID:</text> <text class="value file-id-value">{{item.fileID}}</text></view>
+          <view class="log-field"><text class="label">类型:</text> <text class="value">{{item.type === 'room_type' ? '房型' : '酒店'}}</text></view>
+          <view class="log-field"><text class="label">关联酒店ID:</text> <text class="value">{{item.hotelId || 'N/A'}}</text></view>
+          <view class="log-field"><text class="label">关联对象ID:</text> <text class="value">{{item.parentId || 'N/A'}}</text></view>
+          <view class="log-field"><text class="label">记录时间:</text> <text class="value">{{item.attemptedDeleteTime}}</text></view>
+          <view class="log-field error-field" wx:if="{{item.error}}"><text class="label">错误信息:</text> <text class="value error-value">{{item.error}}</text></view>
+        </view>
+        <view class="log-actions">
+          <button class="action-btn view-btn" size="mini" bindtap="viewInCloudConsole" data-fileid="{{item.fileID}}">控制台查看(复制ID)</button>
+          <button class="action-btn confirm-btn" size="mini" type="primary" bindtap="confirmCleanup" data-fileid="{{item.fileID}}">确认已清理</button>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-log-message">暂无待清理的图片记录。</view>
+    </block>
+  </scroll-view>
+</view> 

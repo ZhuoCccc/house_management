@@ -1,0 +1,5 @@
+<view class="container">
+  <text class="title">用户首页</text>
+  <text>欢迎回来，用户！</text>
+  <!-- Add more user-specific content here -->
+</view> 
